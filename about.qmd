@@ -1,33 +1,36 @@
 ---
-title: "Hakkımda"
-sidebar: false 
+title: "Eylül Işıl altıparmak - Hakkımda"
+sidebar: Kısaca
 ---
 
 ![](assets/images/vesikalik.jpeg){fig-align="center"}
 
 # Eğitim
 
--   B.S., ................................., ....................................University, Turkey, 20xx - 20xx.
--   M.S., Industrial Engineering, Hacettepe University, Turkey, 20xx - ongoing.
--   Ph.D.., Industrial Engineering, Hacettepe University, Turkey, 20xx - ongoing.
+-   B.S., Food Engineering, Hacettepe University, Turkey, 2018 - 2022.
+-   M.S., Industrial Engineering, Hacettepe University, Turkey, 2026 - ongoing.
 
 # İş Tecrübesi
 
 ## Employements
 
-1.  Firm xxx, position xx, year xxx
+1.  Bahs., position Supply Chain Specialist, year 2025-2026
 
-2.  Firm yyy, position yyy, year yyy
+2.  Teaco & Bobaco, position Purchasing Specialist, year 2025
+
+3.  Elite Naturel, position Business Development Specialist, year 2023-2024
+
+4.  Patiswiss, position Project and Business Development Engineer, year 2022-2023
 
 ## Internships
 
-1.  Firm aaa, position xx, year xxx
+1.  Firm Ulker, position Operational Excellence and Efficiency, year 2020
 
-2.  Firm bbb, position yyy, year yyy
+2.  Firm Ankara Halk Ekmek, position Food Engineer, year 2020
 
 # Projects
 
-1.  TUBİTAK 1001..........................
+1.  EU Goals - Peynir Altı Suyundan Saccharomyces cerevisiae S288 Suşu Kullanılarak Tek Hücre Proteini Üretimi
 
 # Publications
 
@@ -35,6 +38,14 @@ sidebar: false
 
 # Competencies
 
-R, Quarto, Git, Python
+Autocad, Matlab, Photoshop, R, Quarto, Git, Python
 
 # Hobbies
+
+- Paragliding
+- Sailing
+- Diving
+- Theathre
+- Photography
+- Archery
+
