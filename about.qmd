@@ -3,7 +3,7 @@ title: "Eylül Işıl altıparmak - Hakkımda"
 sidebar: Kısaca
 ---
 
-![](assets/images/vesikalik.jpeg){fig-align="center"}
+![](assets/images/eia-vesikalık.png){fig-align="center"}
 
 # Eğitim
 
