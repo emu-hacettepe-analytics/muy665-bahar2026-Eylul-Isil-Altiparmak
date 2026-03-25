@@ -5,12 +5,12 @@ sidebar: Kisaca
 
 ![](assets/images/eia-vesikalık.png){fig-align="center"}
 
-# Eğitim
+# Egitim
 
 -   B.S., Food Engineering, Hacettepe University, Turkey, 2018 - 2022.
 -   M.S., Industrial Engineering, Hacettepe University, Turkey, 2026 - ongoing.
 
-# İş Tecrübesi
+# Is Tecrubesi
 
 ## Employements
 
@@ -49,7 +49,7 @@ Autocad, Matlab, Photoshop, R, Quarto, Git, Python
 - Photography
 - Archery
 
-İletişim
+Iletisim
 - Email: eyllaltiparmak@gmail.com
 - LinkedIn: https://www.linkedin.com/in/eylulisilaltiparmak/
 - Instagram: https://www.instagram.com/eylulaltiparmak/
