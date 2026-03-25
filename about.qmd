@@ -1,6 +1,6 @@
 ---
-title: "Eylül Işıl altıparmak - Hakkımda"
-sidebar: Kısaca
+title: "Eylul Isil Altiparmak - Hakkimda"
+sidebar: Kisaca
 ---
 
 ![](assets/images/eia-vesikalık.png){fig-align="center"}
