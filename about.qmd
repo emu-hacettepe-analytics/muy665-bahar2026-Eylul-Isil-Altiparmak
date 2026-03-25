@@ -3,7 +3,7 @@ title: "Eylul Isil Altiparmak - Hakkimda"
 sidebar: Kisaca
 ---
 
-![](assets/images/eia-vesikalık.png){fig-align="center"}
+![](assets/images/eia-vesikalik.png){fig-align="center"}
 
 # Egitim
 
@@ -30,7 +30,7 @@ sidebar: Kisaca
 
 # Projects
 
-1.  EU Goals - Peynir Altı Suyundan Saccharomyces cerevisiae S288 Suşu Kullanılarak Tek Hücre Proteini Üretimi
+1.  EU Goals - Peynir Alti Suyundan Saccharomyces cerevisiae S288 Susu Kullanilarak Tek Hucre Proteini Uretimi
 
 # Publications
 
