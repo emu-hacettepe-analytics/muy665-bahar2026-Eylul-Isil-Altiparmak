@@ -15,7 +15,7 @@ OR/Analytics Dünyasını şu şekilde kategorize etmekte ve alt dallara ayırma
 3. Predictive Analytics: Machine Learning, Regression, Simulation, Clustering
 4. Prescriptive Analytics: Optimization, Math Modeling, Meta Heuristics, Decision Rules
 
-Hayattan alınan OR dersleri
+-Hayattan alınan OR dersleri-
 Problem tanımını güçlü yapmak.
 KPI belirlemeyi detaylandırmak.
 Basit ve etkili çözümler üretmek.
@@ -40,6 +40,3 @@ C) Predictive Analytics
 D) Prescriptive Analytics
 
 Doğru cevap: C)
-
-
-Ya da sınav formatında daha zor sorular hazırlayabilirim
