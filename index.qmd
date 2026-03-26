@@ -6,3 +6,5 @@ sidebar: false
 MUY660-İş Analitiği dersi sayfama hoş geldiniz.
 
 Bu analitik çalışmalarımızı paylaşıyorum.
+
+merhaba

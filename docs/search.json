@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Analitik sayfama hoş geldiniz",
     "section": "",
-    "text": "MUY660-İş Analitiği dersi sayfama hoş geldiniz.\nBu analitik çalışmalarımızı paylaşıyorum.\n\n\n\n Back to top"
+    "text": "MUY660-İş Analitiği dersi sayfama hoş geldiniz.\nBu analitik çalışmalarımızı paylaşıyorum.\nmerhaba\n\n\n\n Back to top"
   },
   {
     "objectID": "teammembers/volkansonmez.html",
@@ -249,7 +249,7 @@
     "href": "proje.html",
     "title": "Proje X (proje adını yazınız)",
     "section": "",
-    "text": "Proje sayfamıza hoş geldiniz.\nProjemizle ilgili güncellemelerden haberdar olmak için bu alanı takip edin.\n(Aşağıdaki başlıklar örnek olarak verilmiştir; lütfen gerektiği şekilde düzenlemekten çekinmeyin.)"
+    "text": "Projemizle ilgili güncellemelerden haberdar olmak için bu xxxxx bağlantısındaki proje sayfamızı takip edin.\n(Aşağıdaki başlıklar örnek olarak verilmiştir; lütfen gerektiği şekilde düzenlemekten çekinmeyin.)"
   },
   {
     "objectID": "proje.html#data-source",
@@ -322,7 +322,7 @@
     "href": "portfolyo/calisma1.html",
     "title": "Çalışma 1",
     "section": "",
-    "text": "(Aşağıdakiler örnek olarak verilmiştir.)\nBu çalışmada 3 görevimiz var. Bu görevler….. Bunlara sırayla aşağıda cevap arıyoruz.",
+    "text": "Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Baykal Hafızoğlu & Erdi Daşdemir - Özet\nBaykal Hafızoğlu hakkında ODTÜ Endüstri Mühendisliği’nden 2005’te, aynı dal ve okuldaki yüksek lisansından 2007’de mezun oldu. Daha sonrasında Arizona State Üniversitesi’nde doktora eğitimini 2012’de tamamladı. Eğitiminin ardından önce Lamasoft’ta Operasyon Optimizasyonu alanında, Predictix’te Tedarik Zinciri Modellemeleri (Whole Foods, Barnes & Noble) alanında, kredilendirme kuruluşu olan FICO’da Product Development (P&G, Carlsberg, H&M, Tetra Pak) alanında kariyer yapmıştır. Hobileri: bilgisayar oyunları, satranç, kodlama ve kızı Eloise ile oynamaktır.\nOR/Analytics Dünyasını şu şekilde kategorize etmekte ve alt dallara ayırmaktadır; 1. Descriptive Analytics: Data Mining, Time Series, Data Visulization 2. Diagnostic Analytics: Hypothesis, Clustering, Regression 3. Predictive Analytics: Machine Learning, Regression, Simulation, Clustering 4. Prescriptive Analytics: Optimization, Math Modeling, Meta Heuristics, Decision Rules\n-Hayattan alınan OR dersleri- Problem tanımını güçlü yapmak. KPI belirlemeyi detaylandırmak. Basit ve etkili çözümler üretmek. Müşteri geri bildirimlerini önemsemek. Ortak dil kurabilmek.\nGüçlü bir temel için şu alanlar önemlidir: Matematik ve istatistik Programlama (özellikle Python, R gibi diller)\n\n*Açık Uçlu Soru Veri biliminde akademinin önemi nedir?\n*Çoktan Seçmeli Soru Şu anki yapay zeka (2026) hangi Analytics kategorisinde daha etkin?\n\nDescriptive Analytics\nDiagnostic Analytics\nPredictive Analytics\nPrescriptive Analytics\n\nDoğru cevap: C)\n\n\n\n Back to top",
     "crumbs": [
       "Çalışma 1"
     ]
@@ -547,16 +547,16 @@
   {
     "objectID": "about.html#employements",
     "href": "about.html#employements",
-    "title": "Hakkımda",
+    "title": "Eylul Isil Altiparmak - Hakkimda",
     "section": "Employements",
-    "text": "Employements\n\nFirm xxx, position xx, year xxx\nFirm yyy, position yyy, year yyy"
+    "text": "Employements\n\nBahs., position Supply Chain Specialist, year 2025-2026\nTeaco & Bobaco, position Purchasing Specialist, year 2025\nElite Naturel, position Business Development Specialist, year 2023-2024\nPatiswiss, position Project and Business Development Engineer, year 2022-2023"
   },
   {
     "objectID": "about.html#internships",
     "href": "about.html#internships",
-    "title": "Hakkımda",
+    "title": "Eylul Isil Altiparmak - Hakkimda",
     "section": "Internships",
-    "text": "Internships\n\nFirm aaa, position xx, year xxx\nFirm bbb, position yyy, year yyy"
+    "text": "Internships\n\nFirm Ulker, position Operational Excellence and Efficiency, year 2020\nFirm Ankara Halk Ekmek, position Food Engineer, year 2020"
   },
   {
     "objectID": "posts.html",
@@ -564,5 +564,159 @@
     "title": "My Blog",
     "section": "",
     "text": "Bu sayfa yapım aşamasındadır.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "docs/project.html",
+    "href": "docs/project.html",
+    "title": "Project X",
+    "section": "",
+    "text": "Welcome to my project page.\nKeep an eye on this space to stay updated with my project activities.\n(The titles below are provided as examples; please feel free to adjust them as necessary.)"
+  },
+  {
+    "objectID": "docs/project.html#data-source",
+    "href": "docs/project.html#data-source",
+    "title": "Project X",
+    "section": "2.1 Data Source",
+    "text": "2.1 Data Source\nxxxxxx"
+  },
+  {
+    "objectID": "docs/project.html#general-information-about-data",
+    "href": "docs/project.html#general-information-about-data",
+    "title": "Project X",
+    "section": "2.2 General Information About Data",
+    "text": "2.2 General Information About Data\nxxxxxx"
+  },
+  {
+    "objectID": "docs/project.html#reason-of-choice",
+    "href": "docs/project.html#reason-of-choice",
+    "title": "Project X",
+    "section": "2.3 Reason of Choice",
+    "text": "2.3 Reason of Choice\nxxxxxx"
+  },
+  {
+    "objectID": "docs/project.html#preprocessing",
+    "href": "docs/project.html#preprocessing",
+    "title": "Project X",
+    "section": "2.4 Preprocessing",
+    "text": "2.4 Preprocessing\nxxxxxx"
+  },
+  {
+    "objectID": "docs/project.html#exploratory-data-analysis",
+    "href": "docs/project.html#exploratory-data-analysis",
+    "title": "Project X",
+    "section": "3.1 Exploratory Data Analysis",
+    "text": "3.1 Exploratory Data Analysis\nxxxxxx"
+  },
+  {
+    "objectID": "docs/project.html#trend-analysis",
+    "href": "docs/project.html#trend-analysis",
+    "title": "Project X",
+    "section": "3.2 Trend Analysis",
+    "text": "3.2 Trend Analysis\nxxxxxx"
+  },
+  {
+    "objectID": "docs/project.html#model-fitting",
+    "href": "docs/project.html#model-fitting",
+    "title": "Project X",
+    "section": "3.3 Model Fitting",
+    "text": "3.3 Model Fitting\nxxxxxx"
+  },
+  {
+    "objectID": "docs/project.html#results",
+    "href": "docs/project.html#results",
+    "title": "Project X",
+    "section": "3.4 Results",
+    "text": "3.4 Results\nxxxxxx"
+  },
+  {
+    "objectID": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html",
+    "href": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html",
+    "title": "EylulIsilAltiparmak-Muy665-Odev1-Soru4",
+    "section": "",
+    "text": "library(dslabs) data(“polls_us_election_2016”) data&lt;-polls_us_election_2016\n\n\n\nmy_first&lt;-“EylulIsil” my_birth_year&lt;-1997\n\n\n\nk&lt;-(nchar(my_first)+my_birth_year)%%15+8\n\n\n\nif(k%%2==0){ head(data,k) }else{ tail(data,k) }"
+  },
+  {
+    "objectID": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#dslabs-paketinden-polls_us_election_2016-veri-setini-ice-aktarin.",
+    "href": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#dslabs-paketinden-polls_us_election_2016-veri-setini-ice-aktarin.",
+    "title": "EylulIsilAltiparmak-Muy665-Odev1-Soru4",
+    "section": "",
+    "text": "library(dslabs) data(“polls_us_election_2016”) data&lt;-polls_us_election_2016"
+  },
+  {
+    "objectID": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#dokumaninizin-en-ustunde-asagidaki-iki-degiskeni-tanimlayin-kendi-bilgilerinizi-kullanin",
+    "href": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#dokumaninizin-en-ustunde-asagidaki-iki-degiskeni-tanimlayin-kendi-bilgilerinizi-kullanin",
+    "title": "EylulIsilAltiparmak-Muy665-Odev1-Soru4",
+    "section": "",
+    "text": "my_first&lt;-“EylulIsil” my_birth_year&lt;-1997"
+  },
+  {
+    "objectID": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#bir-k-tamsayisini-integer-asagidaki-gibi-tanimlayin",
+    "href": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#bir-k-tamsayisini-integer-asagidaki-gibi-tanimlayin",
+    "title": "EylulIsilAltiparmak-Muy665-Odev1-Soru4",
+    "section": "",
+    "text": "k&lt;-(nchar(my_first)+my_birth_year)%%15+8"
+  },
+  {
+    "objectID": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#asagidaki-kurali-kullanarak-orijinal-veri-setinin-k-adet-satirini-web-sayfanizda-goruntuleyin",
+    "href": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#asagidaki-kurali-kullanarak-orijinal-veri-setinin-k-adet-satirini-web-sayfanizda-goruntuleyin",
+    "title": "EylulIsilAltiparmak-Muy665-Odev1-Soru4",
+    "section": "",
+    "text": "if(k%%2==0){ head(data,k) }else{ tail(data,k) }"
+  },
+  {
+    "objectID": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#tum-veri-setindeki-toplam-na-eksik-değer-sayisi",
+    "href": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#tum-veri-setindeki-toplam-na-eksik-değer-sayisi",
+    "title": "EylulIsilAltiparmak-Muy665-Odev1-Soru4",
+    "section": "– Tum veri setindeki toplam NA (eksik) değer sayisi",
+    "text": "– Tum veri setindeki toplam NA (eksik) değer sayisi\nsum(is.na(data)) ## – En buyukten en kucuge siralanmis sekilde sutun basina NA deger sayisi (ilk 8 sutunu goruntuleyin) na_count&lt;-sapply(data[1:8],function(x)sum(is.na(x))) sort(na_count,decreasing=TRUE)"
+  },
+  {
+    "objectID": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#sayisal-numeric-sutunlar-icin-na-degerlerini-my_birth_year-k-ile-degistirin.",
+    "href": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#sayisal-numeric-sutunlar-icin-na-degerlerini-my_birth_year-k-ile-degistirin.",
+    "title": "EylulIsilAltiparmak-Muy665-Odev1-Soru4",
+    "section": "Sayisal (numeric) sutunlar icin: NA degerlerini my_birth_year + k ile degistirin.",
+    "text": "Sayisal (numeric) sutunlar icin: NA degerlerini my_birth_year + k ile degistirin."
+  },
+  {
+    "objectID": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#karakter-character-veya-faktor-factor-sutunları-icin-na-degerlerini-paste0my_first-_-k-ile-degistirin.",
+    "href": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#karakter-character-veya-faktor-factor-sutunları-icin-na-degerlerini-paste0my_first-_-k-ile-degistirin.",
+    "title": "EylulIsilAltiparmak-Muy665-Odev1-Soru4",
+    "section": "Karakter (character) veya faktor (factor) sutunları icin: NA degerlerini paste0(my_first, “_”, k) ile degistirin.",
+    "text": "Karakter (character) veya faktor (factor) sutunları icin: NA degerlerini paste0(my_first, “_”, k) ile degistirin.\nnew_data &lt;- data\nfor(i in 1:length(new_data[1,])){\nif(is.numeric(new_data[[i]])){ new_data[[i]][is.na(new_data[[i]])] &lt;- my_birth_year + k } else { new_data[[i]] &lt;- as.character(new_data[[i]]) new_data[[i]][is.na(new_data[[i]])] &lt;- paste0(my_first, “_”, k) } }"
+  },
+  {
+    "objectID": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#yukaridakiyle-tamamen-ayni-kurali-kullanarak-yeni-veri-cercevesinin-k-satirini-goruntuleyin",
+    "href": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#yukaridakiyle-tamamen-ayni-kurali-kullanarak-yeni-veri-cercevesinin-k-satirini-goruntuleyin",
+    "title": "EylulIsilAltiparmak-Muy665-Odev1-Soru4",
+    "section": "Yukaridakiyle tamamen ayni kurali kullanarak yeni veri cercevesinin k satirini goruntuleyin:",
+    "text": "Yukaridakiyle tamamen ayni kurali kullanarak yeni veri cercevesinin k satirini goruntuleyin:"
+  },
+  {
+    "objectID": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#eger-k-cift-ise-yeni-veri-cercevesinin-ilk-k-satirini-gosterin.",
+    "href": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#eger-k-cift-ise-yeni-veri-cercevesinin-ilk-k-satirini-gosterin.",
+    "title": "EylulIsilAltiparmak-Muy665-Odev1-Soru4",
+    "section": "– Eger k cift ise, yeni veri cercevesinin ilk k satirini gosterin.",
+    "text": "– Eger k cift ise, yeni veri cercevesinin ilk k satirini gosterin."
+  },
+  {
+    "objectID": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#eger-k-tek-ise-yeni-veri-cercevesinin-son-k-satirini-gosterin.",
+    "href": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#eger-k-tek-ise-yeni-veri-cercevesinin-son-k-satirini-gosterin.",
+    "title": "EylulIsilAltiparmak-Muy665-Odev1-Soru4",
+    "section": "– Eger k tek ise, yeni veri cercevesinin son k satirini gosterin.",
+    "text": "– Eger k tek ise, yeni veri cercevesinin son k satirini gosterin.\nif(k %% 2 == 0){\nhead(new_data, k) } else {\ntail(new_data, k) }"
+  },
+  {
+    "objectID": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#yeni-veri-cercevesinde-kalan-toplam-na-deger-sayisini-goruntuleyin.",
+    "href": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#yeni-veri-cercevesinde-kalan-toplam-na-deger-sayisini-goruntuleyin.",
+    "title": "EylulIsilAltiparmak-Muy665-Odev1-Soru4",
+    "section": "Yeni veri cercevesinde kalan toplam NA deger sayisini goruntuleyin.",
+    "text": "Yeni veri cercevesinde kalan toplam NA deger sayisini goruntuleyin.\nsum(is.na(new_data))"
+  },
+  {
+    "objectID": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#ayrica-anynanew_data-komutunu-da-yazdirin-eger-dogru-bir-sekilde-degistirdiyseniz-false-dondurmelidir.",
+    "href": "EylulIsilAltiparmak-Muy665-Odev1Soru4.html#ayrica-anynanew_data-komutunu-da-yazdirin-eger-dogru-bir-sekilde-degistirdiyseniz-false-dondurmelidir.",
+    "title": "EylulIsilAltiparmak-Muy665-Odev1-Soru4",
+    "section": "Ayrica anyNA(new_data) komutunu da yazdirin (Eger dogru bir sekilde degistirdiyseniz FALSE dondurmelidir).",
+    "text": "Ayrica anyNA(new_data) komutunu da yazdirin (Eger dogru bir sekilde degistirdiyseniz FALSE dondurmelidir).\nanyNA(new_data)"
   }
 ]

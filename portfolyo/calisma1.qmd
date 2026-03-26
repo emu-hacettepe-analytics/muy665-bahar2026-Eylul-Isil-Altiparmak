@@ -4,39 +4,23 @@ title: "Çalışma 1"
 
 Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Baykal Hafızoğlu & Erdi Daşdemir - Özet
 
-Baykal Hafızoğlu hakkında
-ODTÜ Endüstri Mühendisliği'nden 2005'te, aynı dal ve okuldaki yüksek lisansından 2007'de mezun oldu. Daha sonrasında Arizona State Üniversitesi'nde doktora eğitimini 2012'de tamamladı. 
-Eğitiminin ardından önce Lamasoft'ta Operasyon Optimizasyonu alanında, Predictix'te Tedarik Zinciri Modellemeleri (Whole Foods, Barnes & Noble) alanında, kredilendirme kuruluşu olan FICO'da Product Development (P&G, Carlsberg, H&M, Tetra Pak) alanında kariyer yapmıştır.
-Hobileri: bilgisayar oyunları, satranç, kodlama ve kızı Eloise ile oynamaktır.
+Baykal Hafızoğlu hakkında ODTÜ Endüstri Mühendisliği'nden 2005'te, aynı dal ve okuldaki yüksek lisansından 2007'de mezun oldu. Daha sonrasında Arizona State Üniversitesi'nde doktora eğitimini 2012'de tamamladı. Eğitiminin ardından önce Lamasoft'ta Operasyon Optimizasyonu alanında, Predictix'te Tedarik Zinciri Modellemeleri (Whole Foods, Barnes & Noble) alanında, kredilendirme kuruluşu olan FICO'da Product Development (P&G, Carlsberg, H&M, Tetra Pak) alanında kariyer yapmıştır. Hobileri: bilgisayar oyunları, satranç, kodlama ve kızı Eloise ile oynamaktır.
 
-OR/Analytics Dünyasını şu şekilde kategorize etmekte ve alt dallara ayırmaktadır;
-1. Descriptive Analytics: Data Mining, Time Series, Data Visulization
-2. Diagnostic Analytics: Hypothesis, Clustering, Regression
-3. Predictive Analytics: Machine Learning, Regression, Simulation, Clustering
-4. Prescriptive Analytics: Optimization, Math Modeling, Meta Heuristics, Decision Rules
+OR/Analytics Dünyasını şu şekilde kategorize etmekte ve alt dallara ayırmaktadır; 1. Descriptive Analytics: Data Mining, Time Series, Data Visulization 2. Diagnostic Analytics: Hypothesis, Clustering, Regression 3. Predictive Analytics: Machine Learning, Regression, Simulation, Clustering 4. Prescriptive Analytics: Optimization, Math Modeling, Meta Heuristics, Decision Rules
 
--Hayattan alınan OR dersleri-
-Problem tanımını güçlü yapmak.
-KPI belirlemeyi detaylandırmak.
-Basit ve etkili çözümler üretmek.
-Müşteri geri bildirimlerini önemsemek.
-Ortak dil kurabilmek.
+-Hayattan alınan OR dersleri- Problem tanımını güçlü yapmak. KPI belirlemeyi detaylandırmak. Basit ve etkili çözümler üretmek. Müşteri geri bildirimlerini önemsemek. Ortak dil kurabilmek.
 
-Güçlü bir temel için şu alanlar önemlidir:
-Matematik ve istatistik
-Programlama (özellikle Python, R gibi diller)
+Güçlü bir temel için şu alanlar önemlidir: Matematik ve istatistik Programlama (özellikle Python, R gibi diller)
 
-----------
+------------------------------------------------------------------------
 
-*Açık Uçlu Soru
-Veri biliminde akademinin önemi nedir? 
+\*Açık Uçlu Soru Veri biliminde akademinin önemi nedir?
 
-*Çoktan Seçmeli Soru
-Şu anki yapay zeka (2026) hangi Analytics kategorisinde daha etkin?
+\*Çoktan Seçmeli Soru Şu anki yapay zeka (2026) hangi Analytics kategorisinde daha etkin?
 
-A) Descriptive Analytics
-B) Diagnostic Analytics
-C) Predictive Analytics
-D) Prescriptive Analytics
+A)  Descriptive Analytics
+B)  Diagnostic Analytics
+C)  Predictive Analytics
+D)  Prescriptive Analytics
 
 Doğru cevap: C)
