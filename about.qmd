@@ -34,25 +34,4 @@ sidebar: Kisaca
 
 # Publications
 
-1.  Dasdemir, E., Batta, R., Koksalan, M., Tezcaner Ozturk, D. (2022) “UAV Routing for Reconnaissance Mission: A Multi-Objective Orienteering Problem with Time-Dependent Prizes and Multiple Connections”, Computers & Operations Research, 145: 105882.
-
-# Competencies
-
-Autocad, Matlab, Photoshop, R, Quarto, Git, Python
-
-# Hobbies
-
-- Paragliding
-- Sailing
-- Diving
-- Theathre
-- Photography
-- Archery
-
-Iletisim
-- Email: eyllaltiparmak@gmail.com
-- LinkedIn: https://www.linkedin.com/in/eylulisilaltiparmak/
-- Instagram: https://www.instagram.com/eylulaltiparmak/
-- GitHub: https://github.com/Eylul-Isil-Altiparmak/
-
-[CV'mi indir](muy665-bahar2026-Eylul-Isil-Altiparmak/About.pdf)
+1.  Dasdemir, E., Batta, R., Koksalan, M., Tezcaner Ozturk, D. (2022) b
