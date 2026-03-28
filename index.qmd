@@ -1,10 +1,10 @@
 ---
-title: "Analitik sayfama hoş geldiniz"
+title: "Analitik sayfama hos geldiniz"
 sidebar: false 
 ---
 
-MUY660-İş Analitiği dersi sayfama hoş geldiniz.
+MUY660-Is Analitigi dersi sayfama hos geldiniz.
 
-Bu analitik çalışmalarımızı paylaşıyorum.
+Bu analitik calismalarimizi paylasiyorum.
 
-merhaba
+
