@@ -2,71 +2,70 @@
 title: "Calisma 1"
 ---
 
-EMU Hacettepe Muhendislik Yonetimi
-MUY665 Is Analitigi
-2025-2026 Bahar Donemi
-
-Odev-1
-
-3.a
+# Odev 3.a
 
 Veri Bilimi ve Endustri Muhendisligi Uzerine Sohbetler - Baykal Hafizoglu & Erdi Dasdemir - Ozet
 
 Baykal Hafizoglu hakkinda ODTU Endustri Muhendisliginden 2005te, ayni dal ve okuldaki yuksek lisansindan 2007de mezun oldu. Daha sonrasinda Arizona State Universitesinde doktora egitimini 2012de tamamladi. Egitiminin ardindan once Lamasoftta Operasyon Optimizasyonu alaninda, Predictixte Tedarik Zinciri Modellemeleri (Whole Foods, Barnes & Noble) alaninda, kredilendirme kurulusu olan FICOda Product Development (P&G, Carlsberg, H&M, Tetra Pak) alaninda kariyer yapmistir. Hobileri: bilgisayar oyunlari, satranc, kodlama ve kizi Eloise ile oynamaktir.
 
-OR/Analytics Dunyasini su sekilde kategorize etmekte ve alt dallara ayirmaktadir; 
-1. Descriptive Analytics: Data Mining, Time Series, Data Visulization
-2. Diagnostic Analytics: Hypothesis, Clustering, Regression 
-3. Predictive Analytics: Machine Learning, Regression, Simulation, Clustering 
-4. Prescriptive Analytics: Optimization, Math Modeling, Meta Heuristics, Decision Rules
+OR/Analytics Dunyasini su sekilde kategorize etmekte ve alt dallara ayirmaktadir;<br> 
+1. Descriptive Analytics: Data Mining, Time Series, Data Visulization <br>
+2. Diagnostic Analytics: Hypothesis, Clustering, Regression <br>
+3. Predictive Analytics: Machine Learning, Regression, Simulation, Clustering <br>
+4. Prescriptive Analytics: Optimization, Math Modeling, Meta Heuristics, Decision Rules<br>
 
-Hayattan alinan OR dersleri
--Problem tanimini guclu yapmak. 
--KPI belirlemeyi detaylandirmak. 
--Basit ve etkili cozumler uretmek. 
--Musteri geri bildirimlerini onemsemek. 
--Ortak dil kurabilmek.
+Hayattan alinan OR dersleri <br>
+- Problem tanimini guclu yapmak. <br>
+- KPI belirlemeyi detaylandirmak. <br>
+- Basit ve etkili cozumler uretmek. <br>
+- Musteri geri bildirimlerini onemsemek. <br>
+- Ortak dil kurabilmek.<br>
 
-Guclu bir temel icin su alanlar onemlidir: 
-Matematik ve istatistik Programlama (ozellikle Python, R gibi diller)
+Guclu bir temel icin su alanlar onemlidir: <br>
+Matematik ve istatistik Programlama (ozellikle Python, R gibi diller)<br>
 
 
-3.b
+# Odev 3.b
 
-*Acik Uclu Soru 
-Veri biliminde akademinin onemi nedir?
+### Acik Uclu Soru 
+Veri biliminde akademinin onemi nedir?<br>
 
-*Coktan Secmeli Soru 
+### Coktan Secmeli Soru 
 
-Su anki yapay zeka (2026) hangi Analytics kategorisinde daha etkin?
-A) Descriptive Analytics
-b) Diagnostic Analytics
-C) Predictive Analytics
-D) Prescriptive Analytics
+Su anki yapay zeka (2026) hangi Analytics kategorisinde daha etkin?<br>
+A) Descriptive Analytics<br>
+b) Diagnostic Analytics<br>
+C) Predictive Analytics<br>
+D) Prescriptive Analytics<br>
 
-Dogru cevap: C
+Dogru cevap: C<br>
 
-4.
+# Odev 4.
 
-## dslabs paketinden polls_us_election_2016 veri setini ice aktarin.
-library(dslabs)
-data("polls_us_election_2016")
-data<-polls_us_election_2016
+### dslabs paketinden polls_us_election_2016 veri setini ice aktarin. <br>
 
-## Dokumaninizin en ustunde asagidaki iki degiskeni tanimlayin (kendi bilgilerinizi kullanin):
-my_first<-"Eylul Isil"
-my_birth_year<-1997
+library(dslabs)<br>
+data("polls_us_election_2016")<br>
+data<-polls_us_election_2016<br>
 
-## Bir k tamsayisini (integer) asagidaki gibi tanimlayin:
-k<-(nchar(my_first)+my_birth_year)%%15+8
+### Dokumaninizin en ustunde asagidaki iki degiskeni tanimlayin (kendi bilgilerinizi kullanin):<br>
 
-## Asagidaki kurali kullanarak orijinal veri setinin k adet satirini web sayfanizda goruntuleyin:
+my_first<-"Eylul Isil"<br>
+my_birth_year<-1997<br>
+
+### Bir k tamsayisini (integer) asagidaki gibi tanimlayin: <br>
+
+k<-(nchar(my_first)+my_birth_year)%%15+8<br>
+
+### Asagidaki kurali kullanarak orijinal veri setinin k adet satirini web sayfanizda goruntuleyin:<br>
+
 if(k%%2==0){
 print(head(data,k))
 }else{
 print(tail(data,k))
 }
 
+```
             state  startdate    enddate
 1            U.S. 2016-11-03 2016-11-06
 2            U.S. 2016-11-01 2016-11-07
@@ -88,48 +87,111 @@ print(tail(data,k))
 18      Wisconsin 2016-10-26 2016-10-31
 19 North Carolina 2016-11-04 2016-11-06
 20        Georgia 2016-11-06 2016-11-06
-                                                     pollster grade samplesize population
-1                                    ABC News/Washington Post    A+       2220         lv
-2                                     Google Consumer Surveys     B      26574         lv
-3                                                       Ipsos    A-       2195         lv
-4                                                      YouGov     B       3677         lv
-5                                            Gravis Marketing    B-      16639         rv
-6  Fox News/Anderson Robbins Research/Shaw & Company Research     A       1295         lv
-7                                     CBS News/New York Times    A-       1426         lv
-8                                NBC News/Wall Street Journal    A-       1282         lv
-9                                                    Zia Poll  <NA>       8439         lv
-10                                                   IBD/TIPP    A-       1107         lv
-11                                           Selzer & Company    A+        799         lv
-12                                          Angus Reid Global    A-       1151         lv
-13                                        Monmouth University    A+        748         lv
-14                                      Public Policy Polling    B+       1238         lv
-15                                             Marist College     A        940         lv
-16                                           Selzer & Company    A+        800         lv
-17                                   The Times-Picayune/Lucid  <NA>       2521         lv
-18                                       Marquette University     A       1255         lv
-19                                              Siena College     A        800         lv
-20                                    Landmark Communications     B       1200         lv
-   rawpoll_clinton rawpoll_trump rawpoll_johnson rawpoll_mcmullin adjpoll_clinton adjpoll_trump
-1            47.00         43.00            4.00               NA        45.20163      41.72430
-2            38.03         35.69            5.46               NA        43.34557      41.21439
-3            42.00         39.00            6.00               NA        42.02638      38.81620
-4            45.00         41.00            5.00               NA        45.65676      40.92004
-5            47.00         43.00            3.00               NA        46.84089      42.33184
-6            48.00         44.00            3.00               NA        49.02208      43.95631
-7            45.00         41.00            5.00               NA        45.11649      40.92722
-8            44.00         40.00            6.00               NA        43.58576      40.77325
-9            46.00         44.00            6.00               NA        44.82594      41.59978
-10           41.20         42.70            7.10               NA        42.92745      42.23545
-11           44.00         41.00            4.00               NA        44.21714      40.57082
-12           48.00         44.00            6.00               NA        47.57171      43.68125
-13           50.00         44.00            4.00               NA        48.86765      43.39600
-14           48.00         43.00            1.00               NA        47.43805      42.32751
-15           44.00         43.00            6.00               NA        42.83406      43.43819
-16           39.00         46.00            6.00               NA        39.37561      45.66917
-17           45.00         40.00            5.00               NA        45.13966      42.26495
-18           46.00         40.00            4.00               NA        46.10344      40.97982
-19           44.00         44.00            3.00               NA        44.21875      45.08290
-20           46.00         49.00            3.00               NA        45.06470      48.80363
+                                                     pollster
+1                                    ABC News/Washington Post
+2                                     Google Consumer Surveys
+3                                                       Ipsos
+4                                                      YouGov
+5                                            Gravis Marketing
+6  Fox News/Anderson Robbins Research/Shaw & Company Research
+7                                     CBS News/New York Times
+8                                NBC News/Wall Street Journal
+9                                                    Zia Poll
+10                                                   IBD/TIPP
+11                                           Selzer & Company
+12                                          Angus Reid Global
+13                                        Monmouth University
+14                                      Public Policy Polling
+15                                             Marist College
+16                                           Selzer & Company
+17                                   The Times-Picayune/Lucid
+18                                       Marquette University
+19                                              Siena College
+20                                    Landmark Communications
+   grade samplesize population
+1     A+       2220         lv
+2      B      26574         lv
+3     A-       2195         lv
+4      B       3677         lv
+5     B-      16639         rv
+6      A       1295         lv
+7     A-       1426         lv
+8     A-       1282         lv
+9   <NA>       8439         lv
+10    A-       1107         lv
+11    A+        799         lv
+12    A-       1151         lv
+13    A+        748         lv
+14    B+       1238         lv
+15     A        940         lv
+16    A+        800         lv
+17  <NA>       2521         lv
+18     A       1255         lv
+19     A        800         lv
+20     B       1200         lv
+   rawpoll_clinton rawpoll_trump
+1            47.00         43.00
+2            38.03         35.69
+3            42.00         39.00
+4            45.00         41.00
+5            47.00         43.00
+6            48.00         44.00
+7            45.00         41.00
+8            44.00         40.00
+9            46.00         44.00
+10           41.20         42.70
+11           44.00         41.00
+12           48.00         44.00
+13           50.00         44.00
+14           48.00         43.00
+15           44.00         43.00
+16           39.00         46.00
+17           45.00         40.00
+18           46.00         40.00
+19           44.00         44.00
+20           46.00         49.00
+   rawpoll_johnson rawpoll_mcmullin
+1             4.00               NA
+2             5.46               NA
+3             6.00               NA
+4             5.00               NA
+5             3.00               NA
+6             3.00               NA
+7             5.00               NA
+8             6.00               NA
+9             6.00               NA
+10            7.10               NA
+11            4.00               NA
+12            6.00               NA
+13            4.00               NA
+14            1.00               NA
+15            6.00               NA
+16            6.00               NA
+17            5.00               NA
+18            4.00               NA
+19            3.00               NA
+20            3.00               NA
+   adjpoll_clinton adjpoll_trump
+1         45.20163      41.72430
+2         43.34557      41.21439
+3         42.02638      38.81620
+4         45.65676      40.92004
+5         46.84089      42.33184
+6         49.02208      43.95631
+7         45.11649      40.92722
+8         43.58576      40.77325
+9         44.82594      41.59978
+10        42.92745      42.23545
+11        44.21714      40.57082
+12        47.57171      43.68125
+13        48.86765      43.39600
+14        47.43805      42.32751
+15        42.83406      43.43819
+16        39.37561      45.66917
+17        45.13966      42.26495
+18        46.10344      40.97982
+19        44.21875      45.08290
+20        45.06470      48.80363
    adjpoll_johnson adjpoll_mcmullin
 1         4.626221               NA
 2         5.175792               NA
@@ -152,42 +214,49 @@ print(tail(data,k))
 19        2.335250               NA
 20        3.662548               NA
 
-# Hesaplayin ve goruntuleyin:
-## Tum veri setindeki toplam NA (eksik) deger sayisi
-sum(is.na(data))
-11604
-## En buyukten en kucuge siralanmis sekilde sutun basina NA deger sayisi (ilk 8 sutunu goruntuleyin)
-na_count<-sapply(data[1:8],function(x)sum(is.na(x)))
-sort(na_count,decreasing=TRUE)
+```
 
-  grade      samplesize 
-            429               1 
+### Hesaplayin ve goruntuleyin: <br>
+### Tum veri setindeki toplam NA (eksik) deger sayisi<br>
+sum(is.na(data))<br>
+11604<br>
+
+### En buyukten en kucuge siralanmis sekilde sutun basina NA deger sayisi (ilk 8 sutunu goruntuleyin)<br>
+
+na_count<-sapply(data[1:8],function(x)sum(is.na(x)))<br>
+sort(na_count,decreasing=TRUE)<br>
+
+```
+  grade      samplesize <br>
+            429               1
           state       startdate 
               0               0 
         enddate        pollster 
               0               0 
      population rawpoll_clinton 
               0               0 
-              
-# Veri setindeki tum NA degerlerini asagidaki gibi degistirin ve sonucu yeni bir nesne olarak kaydedin (orijinalin uzerine yazmayin):
+```              
+
+### Veri setindeki tum NA degerlerini asagidaki gibi degistirin ve sonucu yeni bir nesne olarak kaydedin (orijinalin uzerine yazmayin):<br>
+
 new_data<-data
 
-## Sayisal (numeric) sutunlar icin: NA degerlerini my_birth_year + k ile degistirin.
-## Karakter (character) veya faktor (factor) sutunlari icin: NA degerlerini paste0(my_first, "_", k) ile degistirin.
+### Sayisal (numeric) sutunlar icin: NA degerlerini my_birth_year + k ile degistirin.<br>
+### Karakter (character) veya faktor (factor) sutunlari icin: NA degerlerini paste0(my_first, "_", k) ile degistirin.<br>
 
-for(i in 1:ncol(new_data)){
-if(is.numeric(new_data[[i]])){
-new_data[[i]][is.na(new_data[[i]])] <- my_birth_year + k
-}else{
-new_data[[i]] <- as.character(new_data[[i]])
-new_data[[i]][is.na(new_data[[i]])] <- paste0(my_first, "_", k)
-}
-}
+for(i in 1:ncol(new_data)){<br>
+if(is.numeric(new_data[[i]])){<br>
+new_data[[i]][is.na(new_data[[i]])] <- my_birth_year + k<br>
+}else{<br>
+new_data[[i]] <- as.character(new_data[[i]])<br>
+new_data[[i]][is.na(new_data[[i]])] <- paste0(my_first, "_", k)<br>
+}<br>
+}<br>
 
-# Yeni veri cercevesi (data frame) icin c??kt??lar?? yazdirin:
-# Yukaridakiyle tamamen ayni kurali kullanarak yeni veri cercevesinin k satirini goruntuleyin:
-## Eger k cift ise, yeni veri cercevesinin ilk k satirini gosterin.
-## Eger k tek ise, yeni veri cercevesinin son k satirini gosterin.
+### Yeni veri cercevesi (data frame) icin ciktilari yazdirin:<br>
+### Yukaridakiyle tamamen ayni kurali kullanarak yeni veri cercevesinin k satirini goruntuleyin:<br>
+Eger k cift ise, yeni veri cercevesinin ilk k satirini gosterin.<br>
+Eger k tek ise, yeni veri cercevesinin son k satirini gosterin.<br>
 
 if(k %% 2 == 0){
 head(new_data, k)
@@ -195,6 +264,7 @@ head(new_data, k)
 tail(new_data, k)
 }
 
+```
             state  startdate    enddate
 1            U.S. 2016-11-03 2016-11-06
 2            U.S. 2016-11-01 2016-11-07
@@ -280,10 +350,18 @@ tail(new_data, k)
 19      45.08290        2.335250             2017
 20      48.80363        3.662548             2017
 
-## Yeni veri cercevesinde kalan toplam NA deger sayisini goruntuleyin.
-sum(is.na(new_data))
-0
+```
 
-## Ayrica anyNA(new_data) komutunu da yazdirin (Eger dogru bir sekilde degistirdiyseniz FALSE dondurmelidir).
-anyNA(new_data)
-FALSE
+### Yeni veri cercevesinde kalan toplam NA deger sayisini goruntuleyin.<br>
+sum(is.na(new_data))<br>
+0<br>
+
+### Ayrica anyNA(new_data) komutunu da yazdirin (Eger dogru bir sekilde degistirdiyseniz FALSE dondurmelidir).<br>
+anyNA(new_data)<br>
+FALSE<br>
+
+# AI'den Destek Alinan Yerler
+Sorudaki ciktilar, kopyala-yapisirda bosluklari ve yapisi bozuldugundan alinamamistir. Bundan dolayi su komutlar ile yardim alinarak yapilmistir.
+
+"Yazdirdigim tabloyu scripte kopyaladigimda aradaki bosluklari saymiyor dogru bir tablo gostermiyor bunu nasil duzeltebilirim? Denklem ise nasil yapabilirim? Yazdirdigim orjinal cikti neyse bosluklar da dahil onu gormek istiyorum."
+
