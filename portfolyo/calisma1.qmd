@@ -110,7 +110,7 @@ new_data[[i]][is.na(new_data[[i]])] <- paste0(my_first, "_", k)
 ```
 
 ### Yeni veri cercevesi (data frame) icin ciktilari yazdirin:<br>
-### Yukaridakiyle tamamen ayni kurali kullanarak yeni veri cercevesinin k satirini goruntuleyin:<br>
+Yukaridakiyle tamamen ayni kurali kullanarak yeni veri cercevesinin k satirini goruntuleyin:<br>
 Eger k cift ise, yeni veri cercevesinin ilk k satirini gosterin.<br>
 Eger k tek ise, yeni veri cercevesinin son k satirini gosterin.<br>
 
