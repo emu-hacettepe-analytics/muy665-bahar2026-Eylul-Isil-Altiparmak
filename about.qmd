@@ -53,6 +53,16 @@ EU Goals - Peynir Alti Suyundan Saccharomyces cerevisiae S288 Susu Kullanilarak 
 - Kus Gozlem
 - Bahcecilik
 
+# Competencies
+- Matlab
+- Python
+- Autocad
+- Photoshop
+- Minitab
+- R
+- Quarto
+- Git
+
 # Iletisim
 
 - [Mail](eyllaltiparmak@gmail.com)

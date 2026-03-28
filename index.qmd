@@ -3,6 +3,8 @@ title: "Analitik sayfama hos geldiniz"
 sidebar: false 
 ---
 
+Merhaba, Ben Eylul Isil ALTIPARMAK
+
 MUY660-Is Analitigi dersi sayfama hos geldiniz.
 
 Bu analitik calismalarimizi paylasiyorum.
