@@ -3,7 +3,7 @@ title: "Analitik sayfama hos geldiniz"
 sidebar: false 
 ---
 
-MUY660-Is Analitigi dersi sayfama hos geldiniz.
+MUY660-Is Analitigi dersi sayfama hos geldiniz.
 
 Bu analitik calismalarimizi paylasiyorum.
 
