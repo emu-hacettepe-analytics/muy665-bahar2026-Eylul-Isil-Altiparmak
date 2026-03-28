@@ -3,33 +3,33 @@ project:
   output-dir: docs
 
 website:
-  title: "[xxxx]'in Analitik Labı"
+  title: "Eylul Isil Altiparmak'in Analitik Labi"
   navbar:
     search: true
     left:
       - text: Anasayfa
         href: index.qmd
-      - text: Hakkımda
+      - text: HakkD1mda
         href: about.qmd
-      - text: Gönderilerim
+      - text: Gonderilerim
         href: posts.qmd
-      - text: "MUY665 Ders Çıktıları"
+      - text: "MUY665 Ders Ciktilari"
         menu:
-          - text: Ödevler
+          - text: Odevler
             href: portfolyo.qmd
           - text: Proje
             href: project.qmd
             
     tools:
       - icon: github
-        href: https://twitter.com
+        href: https://github.com/emu-hacettepe-analytics/muy665-bahar2026-Eylul-Isil-Altiparmak
       - icon: twitter
-        href: https://twitter.com
+        href: https://x.com/Eyllaltiparmak
       - icon: linkedin
-        href: https://linkedin.com
+        href: https://linkedin.com/in/eylulisilaltiparmak/
 
   sidebar:
-    - title: "Çalışmalar"
+    - title: "Calismalar"
       style: "docked"
       search: true
       contents:
