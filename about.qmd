@@ -1,37 +1,63 @@
 ---
-title: "Eylul Isil Altiparmak - Hakkimda"
-sidebar: Kisaca
+title: "Eylul Isil Altiparmak"
 ---
 
 ![](assets/images/eia-vesikalik.png){fig-align="center"}
 
 # Egitim
 
--   B.S., Food Engineering, Hacettepe University, Turkey, 2018 - 2022.
--   M.S., Industrial Engineering, Hacettepe University, Turkey, 2026 - ongoing.
+B.S., Food Engineering, Hacettepe University, Turkey, 2018 - 2022.<br>
+M.S., Industrial Engineering, Hacettepe University, Turkey, 2026 - ongoing <br>
 
 # Is Tecrubesi
 
 ## Employements
 
-1.  Bahs., position Supply Chain Specialist, year 2025-2026
-
-2.  Teaco & Bobaco, position Purchasing Specialist, year 2025
-
-3.  Elite Naturel, position Business Development Specialist, year 2023-2024
-
-4.  Patiswiss, position Project and Business Development Engineer, year 2022-2023
+- Bahs., position Supply Chain Specialist, year 2025-2026
+- Teaco & Bobaco, position Purchasing Specialist, year 2025
+- Elite Naturel, position Business Development Specialist, year 2023-2024
+- Patiswiss, position Project and Business Development Engineer, year 2022-2023
 
 ## Internships
 
-1.  Firm Ulker, position Operational Excellence and Efficiency, year 2020
+- Firm Ulker, position Operational Excellence and Efficiency, year 2020
+- Firm Ankara Halk Ekmek, position Food Engineer, year 2020
 
-2.  Firm Ankara Halk Ekmek, position Food Engineer, year 2020
+## Projects
 
-# Projects
-
-1.  EU Goals - Peynir Alti Suyundan Saccharomyces cerevisiae S288 Susu Kullanilarak Tek Hucre Proteini Uretimi
+EU Goals - Peynir Alti Suyundan Saccharomyces cerevisiae S288 Susu Kullanilarak Tek Hucre Proteini Uretimi
 
 # Publications
 
-1.  Dasdemir, E., Batta, R., Koksalan, M., Tezcaner Ozturk, D. (2022) b
+## Karaca Dergisi
+
+### Film incelemeleri
+- Contact, Yonetmen: Robert Zemekis
+- Blade Runner, Yonetmen: Ridley Scott
+- Bos Ev, Yonetmen: Kim Ki-Duk
+- Ben Efsaneyim, Yonetmen: Francis Lawrance
+
+### Kitap Incelemeleri
+- Dunyalar Savasi, Yazar: H.G Wells
+- Ben Robot, Yazar: Isaac Asimov
+- Kar, Yazar: Orhan Pamuk
+- Anayurt Oteli, Yazar: Yusuf Atilgan
+
+# Hobbies
+- Yamac Parasutu
+- Yelkencilik
+- Binicilik
+- Okculuk
+- Dalis
+- Fotografcilik
+- Kus Gozlem
+- Bahcecilik
+
+# Iletisim
+
+- [Mail](eyllaltiparmak@gmail.com)
+- [LinkedIn](https://www.linkedin.com/in/eylulisilaltiparmak/)
+- [Instagram](https://www.instagram.com/eylulaltiparmak/)
+- [GitHub](https://github.com/Eylul-Isil-Altiparmak/)
+
+[CV'mi indir](muy665-bahar2026-Eylul-Isil-Altiparmak/MyWorks/EylulIsilAltiparmak_Cv_2025.pdf)
