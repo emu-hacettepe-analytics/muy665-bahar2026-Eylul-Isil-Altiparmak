@@ -9,7 +9,7 @@ website:
     left:
       - text: Anasayfa
         href: index.qmd
-      - text: HakkD1mda
+      - text: Hakkimda
         href: about.qmd
       - text: Gonderilerim
         href: posts.qmd
