@@ -1,39 +1,48 @@
-# R Console H1 P:40/100
+# 2.HAFTA'nin Plani
+## Analitik Dunyasina Giris
+## Anatiligin 3 Temel Cesidi
+## Programlama ve R
+## R ve R Studio
+## Bir R Programinin Bilesenleri
+## R-Temelleri
+
+
+# R Console H1 P:40/110
 print ("Merhaba Dunya!")
 
-# Atama Operat??r?? H2 P:33/110
+# Atama Operatori H2 P:33/110
 x <- 1
 x <- x+1
 
-# SOR: H2 P:34/110'da harf_listesi = [a,b,c,d,e,f] ve harf_listesi[3:5] neden ??al????mad???
+# SOR: H2 P:34/110'da harf_listesi = [a,b,c,d,e,f] ve harf_listesi[3:5] neden calismadi
 
-# ??s Operat??r?? H2 P:35/100
+# Us Operatorleri H2 P:35/100
 3^2
 
-# ??lk Program??m??z?? Yazal??m H2 P:44/110
+# Ilk Programimizi Yazalim H2 P:44/110
 simdiki_yil <- 2025
 kurulus_yili <- 2004
 yas <- simdiki_yil - kurulus_yili
 print(yas)
 
-# De??erler ve Veri Tipleri - Numeric H2 P:61/110
+# Degerler ve Veri Tipleri - Numeric H2 P:61/110
 sayi <- 4
 class (sayi)
 typeof(sayi)
 
-# De??erler ve Veri Tipleri - Character H2 P:63/110
+# Degerler ve Veri Tipleri - Character H2 P:63/110
 class("Merhaba Dunya!)")
 class("4")
 
-# De??erler ve Veri Tipleri - Logical H2 P:64/110
+# Degerler ve Veri Tipleri - Logical H2 P:64/110
 mantik <- FALSE
 class(mantik)
 typeof(mantik)
 
-# De??erler ve Veri Tipleri - Logical H2 P:65/110
+# Degerler ve Veri Tipleri - Logical H2 P:65/110
 gitar_tel_sayisi <- 6
 mandolin_tel_sayisi <- 8
-## Enst??rmanlar?? tel say??s?? kar????la??t??rmas??
+## Ensturmanlarin tel sayisi karsilastirmasi
 gitar_tel_sayisi > mandolin_tel_sayisi 
 gitar_tel_sayisi < mandolin_tel_sayisi
 ## Sayisal degerlerin karsilastirilmasi
@@ -63,7 +72,7 @@ log(20,2)
 log(x=20,2)
 log(base=2,x=20)
 
-# Built-in (Base)/R'??n i??inde var olan Fonksiyonlar H2 P:72/110
+# Built-in (Base)/R'in icinde var olan Fonksiyonlar H2 P:72/110
 print("Merhaba Dunya")
 sqrt(25)
 min(1,0.75,1.25)
@@ -76,7 +85,7 @@ nchar("hi mom")
 c(1,2)
 seq(1,5)
 
-#Veri T??r?? ??evirme Fonksiyonlar?? H2 P:73/110
+# Veri Tipleri Cevirme Fonksiyonlari H2 P:73/110
 kullanici_no <- 1234
 as.character(kullanici_no)
 kullanici_no_character <- "1234"
@@ -87,25 +96,25 @@ install.packages("stringr")
 library("stringr")
 str_count("Mississippi","i")
 
-# Aritmetik Operat??rler H2 P:77/110
+# Aritmetik Operatorler H2 P:77/110
 help("+")
 
-# Baz?? Aritmetik Operat??rler H2 P:78/110
+# Bazi Aritmetik Operatorler H2 P:78/110
 (9/3)+(4*2)-(3^2)+sqrt(4)
 9/3 + 4*2 - (3^2) + sqrt(4)
 exp(2) + log(20) + log(20,base=2) + 14%%3
 
-# ??li??kisel Operat??rler H2 P:79/110
+# Iliskisel Operatorler H2 P:79/110
 help("<")
 
-# Vekt??rler H2 P:82/110
+# Vektorler H2 P:82/110
 ogrenci_adi <- c("Ali","Ayse","Burak","Cemre")
 final_notlari <- c(85,90,78,88)
 
-# Fakt??rler H2 P:83/110
+# Faktorler H2 P:83/110
 performans <- factor(c("Iyi","Orta","Iyi","Kotu"))
 
-# Data Frame (Veri ??er??evesi) H2 P:84/110
+# Data Frame (Veri Cercevesi) H2 P:84/110
 ogrenci_verileri <- data.frame(
   Ad=c("Ali","Ayse","Burak","Cemre"),
   Vize=c(75.5,80.0,92.3,65.0),
@@ -113,19 +122,19 @@ ogrenci_verileri <- data.frame(
   Basarili=c(TRUE,TRUE,FALSE,TRUE)
 )
 
-# Vaka ??al????mas?? H2 P:86/110
+# Vaka Calismasi H2 P:86/110
 ## install.packages("dslabs")
 install.packages("dslabs")
 library(dslabs)
 data(murders)
 class(murders)
 
-# Nesne Yap??s?? H2 P:87/110
+# Nesne Yapisi H2 P:87/110
 str(murders)
 head()
 head(murders)
 
-# Nesnenin De??i??kenlerine Eri??im H2 P:88/110
+# Nesnenin Degiskenlerine Erisim H2 P:88/110
 murders$population
 str()
 names()
@@ -136,7 +145,7 @@ library(dslabs)
 data(movielens)
 title
 
-# Say??sal Vekt??r H2 P:90/110
+# Sayisal Vektor H2 P:90/110
 murders$population
 pop <- murders$population
 length(pop)
@@ -146,20 +155,20 @@ class(pop)
 murders$state
 class(murders$state)
 
-# Nas??l vekt??r yarat??r??z? H2 P:93/110
+# Nasil vektor yaratiriz? H2 P:93/110
 c()
 codes <- c(380,124,818)
 country <- c("italy","canada","egypt")
 print(codes)
 print(country)
 
-# Bir ba??ka vekt??r yaratma yolu H2 P:94/110
+# Bir baska vektor yaratma yolu H2 P:94/110
 seq()
 seq(1,10)
 seq(1,10,2)
 1:10
 
-#Alt K??meleme H2 P:95/110
+#Alt Kumeleme H2 P:95/110
 codes[2]
 codes[c(1,3)]
 codes[1:2]
@@ -169,7 +178,7 @@ x <- c(1,"Canada",3)
 x
 class(x)
 
-# R'??n kendi d??n??????m fonksiyonlar?? H2 P:98/110
+# R'in kendi donusum fonksiyonlari H2 P:98/110
 x <- 1:5
 y <- as.character(x)
 y
@@ -179,11 +188,11 @@ as.numeric(y)
 x <- c(1,"b",3)
 as.numeric(x)
 
-# S??ralama (Sorting) H2 P:100/110
+# Siralama (Sorting) H2 P:100/110
 sort()
 sort(murders$total)
 
-# Azdan ??o??a S??ralama H2 P:101/110
+# Azdan coga Siralama H2 P:101/110
 order()
 x <- c(31,4,15,92,65)
 x
@@ -192,12 +201,12 @@ index <- order(x)
 index
 x[index]
 
-# Murders S??ralama H2 P:102/110
+# Murders Siralama H2 P:102/110
 index <- order(murders$total)
 index
 murders$abb[index]
 
-# En y??ksek oran?? bulma H2 P:103/110
+# En yuksek orani bulma H2 P:103/110
 max () and min()
 max(murders$total)
 which.max(murders$total)
@@ -211,37 +220,45 @@ rank()
 x <- c(31,4,15,92,65)
 rank(x)
 
-# Vekt??r Aritme??i H2 P:106/110
+# Vektor Aritmegi H2 P:106/110
 heights <- c(69,62,66,70,73,67,73,67,70)
-## inches'?? santimetreye ??evirelim
+## inches'i santimetreye Cevirelim
 heights*2.54
 heights-69
 
-# En y??kse??in Oran?? H2 P:107/110
+# En yuksegin Orani H2 P:107/110
 murders$state[which.max(murders$population)]
 
-# Veri-Orana Denk De??ilse H2 P:108/110
+# Veri-Orana Denk Degilse H2 P:108/110
 max(murders$population)
 
 # Rate H2 P:109/110
 murder_rate <- (murders$total/murders$population)
 murders$state[order(murder_rate,decreasing=TRUE)]
 
-# Fakt??rler " Categorical Data" H2 P:110/110
+# Faktorler "Categorical Data" H2 P:110/110
 levels(murders$region)
 
-# Ko??ullu Y??r??tme (Conditional Execution) H3 P: 34/83
+# 3.HAFTA'nin Plani
+## R- Veri Yapilari
+## Kosullu Yurutme (Conditional Execution)
+## Fonksiyonlar
+## Iterasyon
+## Uretkenlik Araclari
+
+
+# Kosullu Yurutme (Conditional Execution) H3 P: 34/83
 if(boolean condition) {
   expressions
 } else {
   alternative expressions
 }
 
-# Mant??ksal (Boolean) ??fadeler H3 P:36/83
+# Mantiksal (Boolean) Ifadeler H3 P:36/83
 430==430
 430==679
 
-#Ko??ullu ??fadeler H3 P:37/83
+# Kosullu Ifadeler H3 P:37/83
 x <-660
 if(x>0){
   print("x is positive")
@@ -250,7 +267,7 @@ if(x>0){print("x is positive")}
 if(x>0)
   print("x is positive")
 
-# Kar????la??t??rma Operat??rleri H3 P:38/83
+# Karsilastirma Operatorleri H3 P:38/83
 x==y
 x!=y
 x>y
@@ -258,14 +275,14 @@ x<y
 x>=y
 x<=y
 
-# Mant??ksal Operat??rler H3 P:39/83
+# Mantiksal Operatorler H3 P:39/83
 &(and), I(or)
 x<-500
 x>430&x<679
 x<-300
 x>430&x<679
 
-# Alternatifli Ko??ullar H3 P: 40/83
+# Alternatifli Kosullar H3 P: 40/83
 x<-430
 if(x%%2==0){
   print("x is even")
@@ -273,7 +290,7 @@ if(x%%2==0){
   print("x is odd")
 }
 
-# Zincirli Ko??ullar H3 P:41/83
+# Zincirli Kosullar H3 P:41/83
 if(x<y){
   print("x is less than y")
 } else if (x>y){
@@ -282,7 +299,7 @@ if(x<y){
   print("x and y are equal")
 }
 
-#???? i??e Ko??ullar H3 P: 42/83
+# Ic ice Kosullar H3 P: 42/83
 if(x==y){
   print("x and y are equal")
 } else {
@@ -293,7 +310,7 @@ if(x==y){
   }
 }
 
-#???? i??e Ko??ullar Digit Number H3 P:43/83
+# Ic ice Kosullar Digit Number H3 P:43/83
 if(0<x){
   if(x<10){
     print("x is a positive single-digit number")
@@ -304,7 +321,7 @@ if(0<x&x<10){
   print("x is a positive single-digit number")
 }
 
-# Murders Veri Seti ile Uygulama ??al????mas?? H3 P:44/83
+# Murders Veri Seti ile Uygulama Calismasi H3 P:44/83
 library(dslabs)
 data(murders)
 murder_rate<-(murders$total/murders$population)*100000
@@ -315,7 +332,7 @@ if(murder_rate[ind]<0.5){
   print("No state has murder rate that low")
 }
 
-# E??ik Seviyesi De??i??tirilirse H3 P:45/83
+# Esik Seviyesi Degistirilirse H3 P:45/83
 ind<-which.min(murder_rate)
 if(murder_rate[ind]<0.25){
   print(murders$state[ind])
@@ -323,13 +340,13 @@ if(murder_rate[ind]<0.25){
   print("No state has murder rate that low")
 }
 
-#ifelse ??fadesi H3 P: 46/83
+#ifelse Ifadesi H3 P: 46/83
 a<-0
 ifelse(a>0,1/a,NA)
 a<-5
 ifelse(a>0,1/a,NA)
 
-# ifelse vekt??rlerle ??al????ma ve yayg??n kullan??m?? H3 P:47/83
+# ifelse vektorlerle calisma ve yaygin kullanimi H3 P:47/83
 a <- c(0,1,2,-4,5)
 ifelse(a>0,1/a,NA)
 data(na_example)
@@ -337,7 +354,7 @@ sum(is.na(na_example))
 no_nas<-ifelse(is.na(na_example),0,na_example)
 sum(is.na(no_nas))
 
-# any ve all ifadeleri (fonksiyonlar??) H3 P:48/83
+# any ve all ifadeleri (fonksiyonlari) H3 P:48/83
 z<-c(TRUE,TRUE,TRUE)
 any(z)
 all(z)
@@ -345,7 +362,7 @@ z<-c(TRUE,TRUE,FALSE)
 any(z)
 all(z)
 
-# Ayn?? i??lemi ger??ekle??tiren fonsiyonlar - Ortalama Hesaplama H3 P:50/83
+# Ayni islemi gerceklestiren fonsiyonlar - Ortalama Hesaplama H3 P:50/83
 sum(x)/length(x)
 mean()
 avg<-function(x){
@@ -366,7 +383,7 @@ avg<-function(x,arithmetic=TRUE){
   ifelse(arithmetic,sum(x)/n,prod(x)^(1/N))
 }
 
-# Tan??mlanan de??i??kenler ??al????ma alan?? i??inde saklanmaz. H3 P:52/83
+# Tanimlanan degiskenler calistirma alani icinde saklanmaz. H3 P:52/83
 avg<-function(x){
   s<-sum(x)
   n<-length(x)
@@ -376,7 +393,7 @@ s<-3
 avg(1:10)
 s
 
-# D??rtgen Alan?? Hesaplama Fonksiyonu H3 P:53/83
+# Dortgen Alani Hesaplama Fonksiyonu H3 P:53/83
 ## Versiyon 1 
 calculate_rect_area<-function(width,height){
   return(width*height)
@@ -386,21 +403,21 @@ calculate_rect_area<-function(width,height){
   width*height
 }
 
-# Fonksiyonlarda Hata Ay??klama (Debugging) H3 P:54/83
+# Fonksiyonlarda Hata Ayiklama (Debugging) H3 P:54/83
 ## Versiyon 3
 calculate_rect_area<-function(width,height){
   area<-width*height
 }
 
-# ??terasyon - For D??ng??leri H3 P: 56/83
-for(i in de??er ald?????? aral??????){
-  i'nin de??er aral?????? boyuca i'yi kullanan operasyonlar
+# Iterasyon - For Donguleri H3 P: 56/83
+for(i in deger aldigi araligi){
+  i'nin deger araligi boyunca i'yi kullanan operasyonlar
 }
 for(i in 1:10){
   print(i)
 }
 
-# Arda????k Say??lar??n Toplam?? H3 P:58/83
+# Ardasik Sayilarin Toplami H3 P:58/83
 compute_s_n<-function(n){
   x<-1:n
   sum(x)
@@ -408,7 +425,7 @@ compute_s_n<-function(n){
 compute_s_n(3)
 compute_s_n(100)
 
-# Grafikli For D??ng??s?? - Arda????k Say??lar??n Toplam?? H3 P:59/83
+# Grafikli For Dongusu - Ardasik Sayilarin Toplami H3 P:59/83
 m<-25
 s_n<-vector(length=m)
 for(i in 1:m){
@@ -418,14 +435,14 @@ n<-1:m
 plot(n,s_n)
 lines(n,n*(n+1)/2)
 
-# while d??ng??leri H3 P:60/83
+# while donguleri H3 P:60/83
 n<-430
 while (n>0){
   print(n)
   n<-n-50
 }
 
-# Daha Etkin D??ng?? Fonksiyon Aileleri H3 P:62/83
+# Daha Etkin Dongu Fonksiyon Aileleri H3 P:62/83
 sapply(1:4,sqrt)
 sapply(1:4,function(i)sqrt(i))
 
@@ -437,7 +454,7 @@ for(i in 1:m){
 }
 sapply(1:m,compute_s_n)
 
-# Her sat??r??n toplam??n?? bulmak i??in H3 P:64/83
+# Her satirin toplamini bulmak icin H3 P:64/83
 df<-data.frame(x=1:4,y=5:8,z=10:13)
 apply(x=df,MARGIN=1,FUN=sum)
 apply(df,1,sum)
