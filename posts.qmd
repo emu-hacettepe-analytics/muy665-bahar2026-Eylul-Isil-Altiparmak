@@ -1,8 +1,420 @@
 ---
-title: "My Blog"
-sidebar: false 
+title: "Elektronik Egitim Simulatorunde Geri Tepme Davranisinin Sentetik Veri ile Is Analitigi"
+subtitle: "MUY665 Is Analitigi Donem Projesi"
+author:
+  - "Eylul Isil Altiparmak"
+  - "Gizem Cetin"
+  - "Selcan Islek"
+date: "2026-06-07"
+number-sections: true
+format:
+  html:
+    toc: true
+    toc-location: left
+    code-fold: true
+    code-tools: true
+    theme: simplex
+execute:
+  echo: true
+  warning: false
+  message: false
 ---
+```{r}
+#| label: kurulum
+#| include: false
 
-Bu sayfa yapD1m aEamasD1ndadD1r.
+library(readr)
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(ggplot2)
 
----
+proje_yolu <- function(path) {
+  if (file.exists(path)) {
+    path
+  } else {
+    file.path("Project", path)
+  }
+}
+ham_veri <- read_csv(proje_yolu("data/02_m4_sentetik_ham_veri.csv"), show_col_types = FALSE)
+veri <- read_csv(proje_yolu("data/03_m4_temiz_veri.csv"), show_col_types = FALSE)
+uzun_veri <- read_csv(proje_yolu("data/04_m4_uzun_veri.csv"), show_col_types = FALSE)
+degisken_ozeti <- read_csv(proje_yolu("outputs/tables/01_degisken_ozeti.csv"), show_col_types = FALSE)
+faktor_ozetleri <- read_csv(proje_yolu("outputs/tables/02_faktor_ozetleri.csv"), show_col_types = FALSE)
+kombinasyon_ozetleri <- read_csv(proje_yolu("outputs/tables/03_kombinasyon_ozetleri.csv"), show_col_types = FALSE)
+karar_tablosu <- read_csv(proje_yolu("outputs/tables/04_coklu_yanit_karar_tablosu.csv"), show_col_types = FALSE)
+
+tablo_html <- function(x, caption = NULL, digits = 2) {
+  knitr::kable(
+    x,
+    format = "html",
+    caption = caption,
+    digits = digits,
+    table.attr = 'class="table table-striped table-hover table-sm"'
+  )
+}
+
+duzey_tr <- function(x) {
+  dplyr::recode(x, "Dusuk" = "Dusuk", "Yuksek" = "Yuksek", "Kisa" = "Kisa", "Uzun" = "Uzun")
+}
+
+ham_veri_tablo <- ham_veri |>
+  transmute(
+    `Deney sirasi` = Run,
+    `Standart sira` = Std,
+    `Tekrar` = Rep,
+    `A - Aktuator surusu` = duzey_tr(A),
+    `B - Darbe suresi` = duzey_tr(B),
+    `C - Hareketli kutle` = duzey_tr(C),
+    `D - Sonumleme` = duzey_tr(D),
+    `Sapma` = Sapma,
+    `Toparlanma` = Toparlanma,
+    `Gercekcilik skoru` = Skor,
+    `Enerji yuku` = Enerji
+  )
+
+veri_onizleme_tablo <- ham_veri_tablo |> head(8)
+
+degisken_ozeti_tablo <- degisken_ozeti |>
+  transmute(
+    `Gozlem sayisi` = gozlem_sayisi,
+    `Sapma ort.` = sapma_ortalama,
+    `Sapma min.` = sapma_min,
+    `Sapma maks.` = sapma_max,
+    `Toparlanma ort.` = toparlanma_ortalama,
+    `Toparlanma min.` = toparlanma_min,
+    `Toparlanma maks.` = toparlanma_max,
+    `Skor ort.` = skor_ortalama,
+    `Skor min.` = skor_min,
+    `Skor maks.` = skor_max,
+    `Enerji ort.` = enerji_ortalama,
+    `Enerji min.` = enerji_min,
+    `Enerji maks.` = enerji_max
+  )
+
+faktor_ozetleri_tablo <- faktor_ozetleri |>
+  mutate(
+    faktor = recode(
+      faktor,
+      "A" = "Aktuator surusu",
+      "B" = "Darbe suresi",
+      "C" = "Hareketli kutle",
+      "D" = "Sonumleme"
+    ),
+    seviye = duzey_tr(seviye)
+  ) |>
+  transmute(
+    `Faktor` = faktor,
+    `Seviye` = seviye,
+    `Ortalama sapma` = sapma_ort,
+    `Ortalama toparlanma` = toparlanma_ort,
+    `Ortalama skor` = skor_ort,
+    `Ortalama enerji` = enerji_ort
+  )
+
+eksik_deger_tablo <- veri |>
+  summarise(across(everything(), ~ sum(is.na(.x)))) |>
+  pivot_longer(everything(), names_to = "Degisken", values_to = "Eksik deger sayisi")
+```
+
+```{=html}
+<style>
+:root {
+  --m4-koyu: #1F3D3A;
+  --m4-yesil: #2A9D8F;
+  --m4-mint: #8FD6C8;
+  --m4-acik: #D8F3EC;
+  --m4-notr: #5B7C78;
+}
+
+table.table {
+  border: 1px solid rgba(31, 61, 58, 0.18);
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 0.92rem;
+}
+
+table.table thead th {
+  background: var(--m4-koyu);
+  color: #ffffff;
+  border-color: var(--m4-koyu);
+}
+
+table.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: rgba(216, 243, 236, 0.60);
+}
+
+table.table-hover > tbody > tr:hover > * {
+  background-color: rgba(143, 214, 200, 0.28);
+}
+
+caption {
+  color: var(--m4-koyu);
+  font-weight: 700;
+}
+</style>
+```
+
+# Proje Genel Bakis ve Kapsami
+
+Bu projede, muhimmat kullanmayan elektronik bir egitim simulatorunde geri tepme davranisini temsil eden sentetik bir deney veri seti R programlama dili ile analiz edilmektedir. Elektronik egitim simulatorlerinde temel amac, kullaniciya guvenli bir ortamda gercekci bir egitim deneyimi sunmaktir. Bu tur sistemlerde geri tepme hissinin cok zayif olmasi egitim gercekciligini azaltabilir; buna karsilik geri tepme davranisinin cok sert, uzun sureli veya kontrolsuz olmasi kullanici deneyimini ve sistem guvenilirligini olumsuz etkileyebilir.
+
+Bu nedenle bu calismada geri tepme davranisi tek bir performans gostergesiyle degil, birden fazla kriterin birlikte degerlendirilmesiyle ele alinmistir. Analizde sapma, toparlanma suresi, gercekcilik skoru ve enerji yuku birlikte incelenmektedir. Sapma ve gercekcilik skoru egitim hissinin yeterliligini temsil ederken, toparlanma suresi ve enerji yuku sistemin kontrol edilebilirligi ve uygulanabilirligi hakkinda bilgi vermektedir.
+
+Projenin temel karar sorusu sudur: Farkli faktor seviyeleri arasinda, sentetik deney senaryosu icinde en dengeli geri tepme davranisini hangi ayar kombinasyonu saglamaktadir? Bu soruya yanit verebilmek icin faktor seviyeleri arasindaki farklar ozet tablolar, grafikler ve coklu yanit kalite indeksi yardimiyla incelenmistir.
+
+Calisma kapsaminda dort temel faktor ele alinmistir: aktuator surus seviyesi, darbe suresi, hareketli kutle seviyesi ve sonumleme seviyesi. Bu faktorlerin her biri iki seviyede degerlendirilmis ve her kombinasyon icin iki tekrar olacak sekilde toplam 32 gozlemden olusan bir sentetik veri seti kullanilmistir.
+
+Calismanin ana odagi ileri istatistiksel testlerden cok, MUY665 dersinde islenen is analitigi surecini uygulamaktir. Bu nedenle proje; veri okuma, veri duzenleme, kesifsel veri analizi, gorsellestirme, ozet tablo olusturma ve karar destegi adimlari uzerinden ilerlemektedir. R tarafinda `readr`, `dplyr`, `tidyr`, `stringr` ve `ggplot2` paketleri kullanilarak ders notlarinda yer alan temel veri analitigi yaklasimlari uygulanmistir.
+
+Veri seti sentetik/senaryo tabanli olarak hazirlanmistir, bulgular gercek bir fiziksel sistemin kesin sonucu olarak yorumlanmamalidir. Buna karsilik calisma, gercek test verisi elde edildiginde ayni analiz akisinin nasil yeniden calistirilabilecegini gosteren tekrarlanabilir bir is analitigi ornegi sunmaktadir.
+
+# Veri
+
+## Veri Kaynagi
+
+Bu calismada kullanilan veri seti gercek saha veya test olcumu degildir. Veri, muhimmat kullanmayan elektronik egitim simulatorunun geri tepme davranisini temsil etmek amaciyla olusturulmus sentetik/senaryo tabanli deney verisidir.
+
+Bu nedenle bulgular, gercek bir fiziksel sistemin kesin performans kaniti olarak degil, R ile is analitigi yontemlerinin yeniden uretilebilir bir uygulamasi olarak yorumlanmalidir.
+
+Veri kaynaginin sentetik olarak secilmesinin temel nedeni, gercek bir prototip veya saha testinden olcum alinmamis olmasidir. Bu durum, calismanin sinirliligi olmakla birlikte ayni zamanda ders kapsaminda ogrenilen R tabanli veri analitigi surecini kontrollu bir veri seti uzerinde uygulama olanagi saglamaktadir. Bu nedenle veri seti, gercek sistem davranisini birebir temsil eden bir olcum kaydi olarak degil, karar analitigi yaklasimini gostermek icin olusturulmus bir calisma verisi olarak ele alinmistir.
+
+## Veri Hakkinda Genel Bilgiler
+
+Veri seti dort faktor ve dort yanit degiskeninden olusmaktadir. Dort faktorun her biri iki seviyede ele alinmis, her kombinasyon iki tekrar ile gozlemlenmis ve toplam 32 gozlem elde edilmistir.
+
+Faktorler, sistem uzerinde degistirilebilir ayarlari temsil etmektedir:
+
+-   `A - Aktuator surus seviyesi`: Aktuatorun geri tepme etkisini olusturmak icin ne kadar guclu calistirildigini ifade eder. Dusuk surus seviyesi daha yumusak bir tepki uretirken, yuksek surus seviyesi daha belirgin bir geri tepme hissi olusturabilir.
+-   `B - Darbe suresi`: Geri tepme etkisinin ne kadar sureyle uygulandigini gosterir. Kisa darbe suresi daha ani ve kontrollu bir etkiyi, uzun darbe suresi ise daha yayilmis ve toparlanmasi daha zor olabilecek bir etkiyi temsil eder.
+-   `C - Hareketli kutle seviyesi`: Simulator icinde geri tepme hissini olusturan hareketli parcanin kutle duzeyini temsil eder. Daha yuksek kutle, geri tepme hissini guclendirebilir; ancak sistemin toparlanma davranisini da etkileyebilir.
+-   `D - Sonumleme seviyesi`: Geri tepme sonrasi hareketin ne kadar hizli bastirildigini veya dengelendigini ifade eder. Yuksek sonumleme, sistemin daha kontrollu bicimde toparlanmasina yardimci olabilir.
+
+Yanit degiskenleri ise her deney kosulunda sistemin nasil davrandigini olcmek icin kullanilan performans gostergeleridir:
+
+-   `Sapma`: Geri tepme sonrasinda nisan hattinda veya simulator ekseninde olusan sapma duzeyini temsil eder. Cok dusuk sapma gercekcilik hissini azaltabilir; cok yuksek sapma ise kontrolu zorlastirabilir.
+-   `Toparlanma`: Geri tepme etkisinden sonra sistemin yeniden kararli hale gelmesi icin gereken sureyi temsil eder. Daha dusuk toparlanma suresi, kullanicinin bir sonraki harekete daha hizli hazirlanabilmesi acisindan avantajlidir.
+-   `Skor`: Geri tepme davranisinin kullanici tarafindan ne kadar gercekci algilanabilecegini temsil eden sentetik bir degerlendirme skorudur. Bu degiskende yuksek deger daha olumlu kabul edilmistir.
+-   `Enerji`: Geri tepme etkisini olusturmak icin gereken enerji yukunu temsil eder. Enerji degerinin cok yukselmesi, gercek bir sistemde batarya tuketimi, isinma veya mekanik zorlanma gibi konular acisindan risk olusturabilir.
+
+Bu yapi, her faktor kombinasyonunun sistem davranisi uzerindeki etkisini karsilastirmaya imkan verir. Ornegin yuksek surus seviyesi geri tepme hissini artirabilir; ancak ayni zamanda enerji yukunu veya toparlanma suresini de artirabilir. Benzer sekilde yuksek sonumleme, sistemin daha kontrollu toparlanmasina yardimci olabilir fakat gercekcilik algisi uzerindeki etkisi diger faktorlerle birlikte degerlendirilmelidir. Bu nedenle veri seti, tek degiskenli bir siralama yapmak yerine cok kriterli bir karar problemi olarak yorumlanmistir.
+
+```{r}
+#| label: veri-yapisi
+#| echo: false
+
+tablo_html(veri_onizleme_tablo, "Veri setinden ilk sekiz gozlem")
+```
+
+## Veri Okuma ve On Isleme
+
+Veriler CSV formatinda R ortamina aktarilmistir. Ders notlarinda yer alan `readr`, `dplyr`, `tidyr` ve `stringr` paketleri kullanilarak veri okunmus, faktor degiskenleri duzenlenmis, kombinasyon etiketi olusturulmus ve grafikler icin uzun formata cevrilmistir.
+
+On isleme asamasinda oncelikle veri setinde eksik deger olup olmadigi kontrol edilmistir. Daha sonra `A`, `B`, `C` ve `D` degiskenleri karakter veri tipinden faktor yapisina donusturulmustur. Bu donusum onemlidir; cunku bu degiskenler sayisal buyukluk degil, kategorik deney seviyelerini temsil etmektedir. Ayrica grafiklerde ve ozet tablolarda daha okunabilir bir yapi elde etmek icin her satirda faktor kombinasyonunu gosteren ek bir etiket olusturulmustur.
+
+Grafik ve ozet analizlerde daha esnek calisabilmek icin veri seti uzun formata da cevrilmistir. Boylece `Sapma`, `Toparlanma`, `Skor` ve `Enerji` degiskenleri ayni yapi icinde karsilastirilabilir hale getirilmistir. Bu adim, ders notlarinda anlatilan tidy data yaklasimina uygun bir duzenleme adimidir.
+
+Asagidaki tablo, analizde kullanilan 32 gozlemli ham sentetik veri setinin tamamini gostermektedir. Tabloda her satir bir deney kosulunu; faktor sutunlari ilgili ayari; son dort sutun ise bu ayar altinda elde edilen sentetik yanit degerlerini gostermektedir.
+
+```{r}
+#| label: ham-veri-tablosu
+#| echo: false
+
+tablo_html(ham_veri_tablo, "Analizde kullanilan ham sentetik veri seti")
+```
+
+```{r}
+#| label: veri-on-isleme-kodu
+
+veri_ornek <- read_csv(proje_yolu("data/03_m4_temiz_veri.csv"), show_col_types = FALSE)
+
+veri_ornek <- veri_ornek |>
+  mutate(
+    A = factor(A, levels = c("Dusuk", "Yuksek")),
+    B = factor(B, levels = c("Kisa", "Uzun")),
+    C = factor(C, levels = c("Dusuk", "Yuksek")),
+    D = factor(D, levels = c("Dusuk", "Yuksek")),
+    kombinasyon = str_c("A=", A, " | B=", B, " | C=", C, " | D=", D)
+  )
+
+eksik_deger_tablo |>
+  tablo_html("On isleme sonrasi eksik deger kontrolu")
+```
+
+# Kesifsel Veri Analizi
+
+Ilk adimda veri setinin genel yapisi ve sayisal degiskenlerin temel ozetleri incelenmistir. Bu adim, hangi degiskenlerin karar acisindan daha belirleyici olabilecegini anlamak icin kullanilmistir.
+
+Kesifsel veri analizi, bu projede yalnizca tablo uretmek icin degil, sonraki grafik ve karar adimlarini yonlendirmek icin kullanilmistir. Ortalama, minimum ve maksimum degerler incelenerek degiskenlerin hangi aralikta degistigi gorulmustur. Boylece ornegin gercekcilik skoru yuksek olan ayarlarin enerji yuku bakimindan da kabul edilebilir olup olmadigi tartisilabilir hale gelmistir.
+
+```{r}
+#| label: degisken-ozeti
+#| echo: false
+
+tablo_html(degisken_ozeti_tablo, "Sayisal degiskenlerin genel ozeti")
+```
+
+Faktor seviyelerine gore ortalamalar incelendiginde, ozellikle surus seviyesi ve darbe suresinin sapma, toparlanma ve gercekcilik skoru uzerinde belirgin farklar olusturdugu gorulmektedir.
+
+Bu tablo, her faktorun tek basina ortalama etkisini gormeye yardimci olur. Ancak faktorlerin birlikte calistigi unutulmamalidir. Bir ayarin iyi veya kotu olarak siniflandirilmasi yalnizca surus seviyesi ya da darbe suresine bagli degildir; kutle ve sonumleme seviyesi de sonuclari degistirebilir. Bu nedenle grafiklerle analiz bolumunde degiskenler birlikte yorumlanmistir.
+
+```{r}
+#| label: faktor-ozetleri
+#| echo: false
+
+tablo_html(faktor_ozetleri_tablo, "Faktor seviyelerine gore ortalama yanitlar")
+```
+
+Bu bolumdeki tablolar, Grafik 1'in temelini olusturmaktadir. Once her faktor seviyesi ve her kombinasyon icin sapma, toparlanma, gercekcilik skoru ve enerji degerleri ozetlenmistir. Daha sonra ozellikle `Skor` degiskeni kullanilarak her faktor kombinasyonunun ortalama gercekcilik skoru hesaplanmistir. Grafik 1, bu hesaplanan ortalama gercekcilik skorlarini gorsellestirerek hangi ayar kombinasyonlarinin kullanici algisi acisindan daha guclu gorundugunu karsilastirmali bicimde gostermektedir.
+
+# Grafiklerle Analiz
+
+Bu bolumde grafiklerde ve tablolarda ortak bir yesil/teal renk standardi kullanilmistir. Koyu yesil ana vurgu ve baslik rengini, canli yesil guclu sonuclari, mint tonu orta seviyedeki durumlari, notr yesil-gri ton ise daha dusuk performans gosteren adaylari temsil etmektedir. Boylece farkli grafiklerde kullanilan renklerin ayni gorsel dil icinde okunmasi amaclanmistir.
+
+## Grafik 1: Faktor Kombinasyonlarina Gore Gercekcilik Skoru
+
+Grafiklerde kullanilan kisaltmalar veri setindeki faktorleri temsil etmektedir: `A` aktuator surus seviyesini, `B` darbe suresini, `C` hareketli kutle seviyesini ve `D` sonumleme seviyesini ifade etmektedir. Ornegin `A:Yuksek | B:Kisa | C:Yuksek | D:Yuksek` ifadesi; aktuator surusunun yuksek, darbe suresinin kisa, hareketli kutlenin yuksek ve sonumlemenin yuksek oldugu ayar kombinasyonunu gostermektedir.
+
+```{r}
+#| label: grafik-1
+#| echo: false
+#| fig-cap: "Faktor kombinasyonlarina gore ortalama gercekcilik skoru"
+
+knitr::include_graphics(proje_yolu("outputs/figures/grafik_01_gercekcilik_skoru.png"))
+```
+
+Bu grafik, gercekcilik skorunun faktor kombinasyonlarina gore degistigini gostermektedir. En yuksek skorlar genellikle surus seviyesinin yuksek ve darbe suresinin kisa oldugu kombinasyonlarda ortaya cikmaktadir. Bu durum, sentetik senaryoda geri tepme hissinin guclu fakat kontrol edilebilir oldugu ayarlarin daha olumlu degerlendirildigini gostermektedir.
+
+Grafik ayni zamanda tum kombinasyonlarin birbirine yakin performans gostermedigini de ortaya koymaktadir. Bazi ayarlar yuksek gercekcilik saglarken bazilari belirgin bicimde geride kalmaktadir. Bu fark, karar vericinin yalnizca faktor seviyelerini tek tek degil, kombinasyon mantigiyla degerlendirmesi gerektigini gostermektedir.
+
+Grafik 1'de ust siralarda yer alan kombinasyonlar incelendiginde, yuksek aktuator surus seviyesinin gercekcilik algisini artiran onemli bir unsur oldugu gorulmektedir. Ancak yalnizca surus seviyesinin yuksek olmasi yeterli degildir; darbe suresinin kisa olmasi da ayarin daha dengeli algilanmasina katki saglamaktadir. Uzun darbe suresi kullanilan bazi kombinasyonlarda gercekcilik skoru dusmektedir. Bu durum, geri tepme etkisinin guclu olmasinin yaninda suresinin de kontrol edilebilir olmasi gerektigini gostermektedir.
+
+Kutle ve sonumleme seviyeleri ise ust siralardaki kombinasyonlarin kendi icindeki siralamasini degistirmektedir. Ozellikle yuksek sonumleme, geri tepme sonrasi sistemin daha kontrollu davranmasina katki sundugu icin gercekcilik algisini dolayli olarak destekleyebilir. Bu nedenle Grafik 1, tek bir faktorun etkisinden cok faktorlerin birlikte olusturdugu ayar profilinin onemli oldugunu gostermektedir.
+
+## Grafik 2: Sapma ve Toparlanma Suresi Iliskisi
+
+```{r}
+#| label: grafik-2
+#| echo: false
+#| fig-cap: "Sapma ve toparlanma suresi iliskisi"
+
+knitr::include_graphics(proje_yolu("outputs/figures/grafik_02_sapma_toparlanma.png"))
+```
+
+Sapma ile toparlanma suresi birlikte incelendiginde, daha yuksek sapma ureten ayarlarin her zaman daha iyi olmadigi gorulmektedir. Cunku yuksek sapma, toparlanma suresini uzatarak kullanici kontrolunu zorlastirabilir. Bu nedenle karar yalnizca tek bir degiskene gore verilmemelidir.
+
+Bu grafik is analitigi acisindan onemli bir denge problemini gostermektedir. Egitim simulatorunde sapmanin cok dusuk olmasi gercekcilik hissini zayiflatabilir; ancak sapmanin cok yuksek olmasi da kullanicinin hedefe geri donmesini zorlastirabilir. Bu nedenle ideal ayar, yuksek sapma ureten degil, yeterli sapma ile makul toparlanma suresini birlikte saglayan ayardir.
+
+Grafik 2'de noktalarin konumu, her deney kosulunda sapma ve toparlanma suresinin birlikte nasil degistigini gostermektedir. Renk tonlari gercekcilik skorunu temsil ettigi icin yalnizca eksenlere degil, noktanin rengine de bakmak gerekir. Daha koyu renkli noktalar daha yuksek gercekcilik skoruna karsilik gelmektedir. Bu sayede, yuksek gercekcilik skoru saglayan ayarlarin ayni zamanda kabul edilebilir toparlanma suresine sahip olup olmadigi gorsel olarak degerlendirilebilir.
+
+Grafikte gorulen temel cikarim, kararin tek boyutlu olmadigidir. Sag tarafa dogru gidildikce sapma artmakta, yukari dogru gidildikce toparlanma suresi uzamaktadir. Ideal bolge, cok dusuk sapmanin olmadigi fakat toparlanma suresinin de asiri yukselmedigi orta-ust denge alanidir. Bu nedenle Grafik 2, sonraki coklu yanit kalite indeksinin neden gerekli oldugunu desteklemektedir: cunku gercekcilik, sapma ve toparlanma ayni anda degerlendirilmeden guvenilir bir karar onerisi uretmek zordur.
+
+## Grafik 3: Sonumleme Seviyesine Gore Toparlanma Suresi
+
+```{r}
+#| label: grafik-3
+#| echo: false
+#| fig-cap: "Sonumleme seviyesine gore toparlanma suresi"
+
+knitr::include_graphics(proje_yolu("outputs/figures/grafik_03_toparlanma_boxplot.png"))
+```
+
+Boxplot grafigi, sonumleme seviyesinin toparlanma suresi uzerindeki etkisini gorsel olarak karsilastirmaktadir. Yuksek sonumleme seviyesi, geri tepme sonrasi sistemin daha kontrollu davranmasina yardimci olan bir faktor olarak yorumlanabilir.
+
+Kutu grafigi dagilimi gostermesi acisindan ozellikle yararlidir. Sadece ortalamaya bakmak yerine, toparlanma suresinin hangi aralikta degistigi ve degerlerin ne kadar yayildigi gorulebilir. Bu da karar surecinde kararlilik ve tutarlilik acisindan ek bilgi saglar.
+
+## Grafik 4: Enerji Yuku ve Gercekcilik Skoru Iliskisi
+
+```{r}
+#| label: grafik-4
+#| echo: false
+#| fig-cap: "Enerji yuku ve gercekcilik skoru iliskisi"
+
+knitr::include_graphics(proje_yolu("outputs/figures/grafik_04_enerji_skor.png"))
+```
+
+Enerji yuku ile gercekcilik skoru arasinda dogrudan ve tek yonlu bir karar vermek uygun degildir. Bazi ayarlar daha yuksek gercekcilik skoru uretse de enerji yuku de artabilmektedir. Bu nedenle proje kapsaminda enerji yuku, karar skorunda dengeleyici bir kriter olarak ele alinmistir.
+
+Bu bolumde amac, "en gercekci his" ile "uygulanabilir enerji yuku" arasindaki iliskiyi tartismaktir. Gercek bir sistemde enerji yukunun artmasi batarya kullanimi, aktuator isinmasi veya uzun donem guvenilirlik gibi konularda risk olusturabilir. Bu nedenle gercekcilik skoru yuksek olan bir ayar, enerji yuku cok yuksekse dogrudan en iyi secenek olarak kabul edilmemelidir.
+
+## Grafik 5: Faktor Seviyelerine Gore Ortalama Skor
+
+```{r}
+#| label: grafik-5
+#| echo: false
+#| fig-cap: "Faktor seviyelerine gore ortalama gercekcilik skoru"
+
+knitr::include_graphics(proje_yolu("outputs/figures/grafik_05_faktor_skor.png"))
+```
+
+Bu grafik, her faktorun seviyelerine gore ortalama gercekcilik skorunu gostermektedir. Ders notlarinda vurgulanan gorsellestirme prensiplerine uygun olarak, kategorik seviyeler grafik uzerinden karsilastirilmis ve karar acisindan anlamli farklar aranmistir.
+
+Grafik, faktor seviyelerinin etkisini sade bir bicimde okumaya yardimci olur. Bu tur bir gorsellestirme, karar vericiye hangi faktorlerin daha dikkatle izlenmesi gerektigini gosterir. Ozellikle gercekcilik skoru acisindan guclu gorunen seviyeler, sonraki coklu yanit degerlendirmesinde diger kriterlerle birlikte yeniden ele alinmistir.
+
+# Coklu Yanit Degerlendirmesi
+
+Tek bir performans gostergesine bakmak yerine sapma, toparlanma suresi, gercekcilik skoru ve enerji yuku birlikte degerlendirilmistir. Bu amacla her aday kombinasyon icin 0-100 araliginda bir kalite indeksi hesaplanmistir.
+
+Kalite indeksinde amac, farkli yonlerde yorumlanan degiskenleri ortak bir karar olcusune donusturmektir. Gercekcilik skorunun yuksek olmasi olumlu kabul edilirken, toparlanma suresi ve enerji yukunun daha dusuk olmasi tercih edilmistir. Sapma icin ise hedefe yakinlik mantigi kullanilmistir; cunku sapmanin ne cok dusuk ne de asiri yuksek olmasi istenmektedir.
+
+```{r}
+#| label: karar-tablosu
+#| tbl-cap: "Kalite indeksine gore en iyi aday kombinasyonlar"
+
+karar_tablosu |>
+  select(kombinasyon_kisa, sapma_ort, toparlanma_ort, skor_ort, enerji_ort, kalite_indeksi, karar_sinifi) |>
+  head(8) |>
+  rename(
+    `Faktor kombinasyonu` = kombinasyon_kisa,
+    `Ortalama sapma` = sapma_ort,
+    `Ortalama toparlanma` = toparlanma_ort,
+    `Ortalama skor` = skor_ort,
+    `Ortalama enerji` = enerji_ort,
+    `Kalite indeksi` = kalite_indeksi,
+    `Karar sinifi` = karar_sinifi
+  ) |>
+  tablo_html("Kalite indeksine gore en iyi aday kombinasyonlar")
+```
+
+```{r}
+#| label: grafik-6
+#| echo: false
+#| fig-cap: "Coklu yanit kalite indeksine gore aday kombinasyonlar"
+
+knitr::include_graphics(proje_yolu("outputs/figures/grafik_06_coklu_yanit_skoru.png"))
+```
+
+Coklu yanit kalite indeksine gore en guclu aday kombinasyon `A=Yuksek`, `B=Kisa`, `C=Yuksek`, `D=Yuksek` olarak belirlenmistir. Bu ayar, sentetik senaryo icinde yuksek gercekcilik skoru saglarken sapma, toparlanma ve enerji yuku arasinda daha dengeli bir sonuc vermektedir.
+
+Ilk uc adayin tamaminda surus seviyesinin yuksek ve darbe suresinin kisa olmasi dikkat cekicidir. Bu sonuc, sentetik senaryoda guclu fakat kisa sureli bir etkinin daha avantajli oldugunu dusundurmektedir. Bununla birlikte kutle ve sonumleme seviyeleri adaylarin siralamasini degistirmektedir. Bu nedenle karar onerisi tek bir faktore indirgenmemis, tum yanitlarin birlikte degerlendirildigi kalite indeksi uzerinden yapilmistir.
+
+# Sonuclar ve Ana Cikarimlar
+
+Bu calismada M4 elektronik egitim simulatoru icin sentetik deney verisi uzerinden R tabanli bir is analitigi akisi kurulmustur. Veri okuma, duzenleme, ozetleme, gorsellestirme ve coklu kriterli karar skoru adimlari birlikte kullanilmistir.
+
+Ana cikarimlar:
+
+-   En yuksek geri tepme hissi her zaman en iyi ayar anlamina gelmemektedir.
+-   Toparlanma suresi ve enerji yuku karar surecinde mutlaka dikkate alinmalidir.
+-   Sentetik senaryo icinde en dengeli aday `A=Yuksek`, `B=Kisa`, `C=Yuksek`, `D=Yuksek` kombinasyonudur.
+-   R ile hazirlanan bu analiz akisi, gercek test verisi elde edildiginde ayni sekilde tekrar calistirilabilir.
+
+Genel olarak bu calisma, is analitigi yaklasiminin yalnizca gecmis verileri ozetlemekten ibaret olmadigini gostermektedir. Veri duzenleme, gorsellestirme ve karar skoru adimlari birlikte kullanildiginda, karmasik gorunen teknik bir problem daha anlasilir bir karar problemine donusturulebilmektedir. Bu yonuyle proje, MUY665 dersinde ele alinan tanimlayici analitik ve karar destegi yaklasimini uygulamali bir ornek uzerinden gostermektedir.
+
+# Kisitlar ve Etik Not
+
+Bu calisma gercek saha veya laboratuvar test verisi icermemektedir. Veri seti sentetik/senaryo tabanli oldugu icin bulgular gercek bir fiziksel sistemin kesin performans kaniti olarak yorumlanmamalidir. Gercek uygulama icin pilot test, olcum sistemi analizi ve fiziksel dogrulama gereklidir.
+
+Bu proje kapsaminda yapay zeka destegi; proje planinin duzenlenmesi, R kod akisinin yapilandirilmasi, Quarto rapor taslaginin hazirlanmasi ve yazili anlatimin iyilestirilmesi amaciyla kullanilmistir.
+
+# Kaynaklar
+
+-   MUY665 Is Analitigi ders notlari, 2025-2026 Bahar Donemi.
+-   MUY665 2023-2024 Bahar donemi ornek proje sayfalari.
+-   Quarto dokumantasyonu: <https://quarto.org/>
+-   R paketleri: `readr`, `dplyr`, `tidyr`, `stringr`, `ggplot2`.
+
+
+
+
+

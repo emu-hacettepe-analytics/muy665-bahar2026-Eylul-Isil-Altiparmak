@@ -11,7 +11,7 @@ website:
         href: index.qmd
       - text: Hakkimda
         href: about.qmd
-      - text: Gonderilerim
+      - text: Project
         href: posts.qmd
       - text: "MUY665 Ders Ciktilari"
         menu:
