@@ -1,4 +1,4 @@
----
+o;?---
 title: "Elektronik Egitim Simulatorunde Geri Tepme Davranisinin Sentetik Veri ile Is Analitigi"
 subtitle: "MUY665 Is Analitigi Donem Projesi"
 author:

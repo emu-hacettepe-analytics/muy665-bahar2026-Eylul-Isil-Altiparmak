@@ -1,0 +1,418 @@
+---
+title: "Elektronik EDitim SimC<latC6rC<nde Geri Tepme DavranD1ED1nD1n Sentetik Veri ile D0E AnalitiDi"
+subtitle: "MUY665 D0E AnalitiDi DC6nem Projesi"
+author:
+  - "EylC<l IED1l AltD1parmak"
+  - "Gizem Cetin"
+  - "Selcan D0Elek"
+date: "2026-06-07"
+number-sections: true
+format:
+  html:
+    toc: true
+    toc-location: left
+    code-fold: true
+    code-tools: true
+    theme: simplex
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: kurulum
+#| include: false
+
+library(readr)
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(ggplot2)
+
+proje_yolu <- function(path) {
+  if (file.exists(path)) {
+    path
+  } else {
+    file.path("Project", path)
+  }
+}
+ham_veri <- read_csv(proje_yolu("data/02_m4_sentetik_ham_veri.csv"), show_col_types = FALSE)
+veri <- read_csv(proje_yolu("data/03_m4_temiz_veri.csv"), show_col_types = FALSE)
+uzun_veri <- read_csv(proje_yolu("data/04_m4_uzun_veri.csv"), show_col_types = FALSE)
+degisken_ozeti <- read_csv(proje_yolu("outputs/tables/01_degisken_ozeti.csv"), show_col_types = FALSE)
+faktor_ozetleri <- read_csv(proje_yolu("outputs/tables/02_faktor_ozetleri.csv"), show_col_types = FALSE)
+kombinasyon_ozetleri <- read_csv(proje_yolu("outputs/tables/03_kombinasyon_ozetleri.csv"), show_col_types = FALSE)
+karar_tablosu <- read_csv(proje_yolu("outputs/tables/04_coklu_yanit_karar_tablosu.csv"), show_col_types = FALSE)
+
+tablo_html <- function(x, caption = NULL, digits = 2) {
+  knitr::kable(
+    x,
+    format = "html",
+    caption = caption,
+    digits = digits,
+    table.attr = 'class="table table-striped table-hover table-sm"'
+  )
+}
+
+duzey_tr <- function(x) {
+  dplyr::recode(x, "Dusuk" = "DC<EC<k", "Yuksek" = "YC<ksek", "Kisa" = "KD1sa", "Uzun" = "Uzun")
+}
+
+ham_veri_tablo <- ham_veri |>
+  transmute(
+    `Deney sD1rasD1` = Run,
+    `Standart sD1ra` = Std,
+    `Tekrar` = Rep,
+    `A - AktC<atC6r sC<rC<EC<` = duzey_tr(A),
+    `B - Darbe sC<resi` = duzey_tr(B),
+    `C - Hareketli kC<tle` = duzey_tr(C),
+    `D - SC6nC<mleme` = duzey_tr(D),
+    `Sapma` = Sapma,
+    `Toparlanma` = Toparlanma,
+    `GerC'ekC'ilik skoru` = Skor,
+    `Enerji yC<kC<` = Enerji
+  )
+
+veri_onizleme_tablo <- ham_veri_tablo |> head(8)
+
+degisken_ozeti_tablo <- degisken_ozeti |>
+  transmute(
+    `GC6zlem sayD1sD1` = gozlem_sayisi,
+    `Sapma ort.` = sapma_ortalama,
+    `Sapma min.` = sapma_min,
+    `Sapma maks.` = sapma_max,
+    `Toparlanma ort.` = toparlanma_ortalama,
+    `Toparlanma min.` = toparlanma_min,
+    `Toparlanma maks.` = toparlanma_max,
+    `Skor ort.` = skor_ortalama,
+    `Skor min.` = skor_min,
+    `Skor maks.` = skor_max,
+    `Enerji ort.` = enerji_ortalama,
+    `Enerji min.` = enerji_min,
+    `Enerji maks.` = enerji_max
+  )
+
+faktor_ozetleri_tablo <- faktor_ozetleri |>
+  mutate(
+    faktor = recode(
+      faktor,
+      "A" = "AktC<atC6r sC<rC<EC<",
+      "B" = "Darbe sC<resi",
+      "C" = "Hareketli kC<tle",
+      "D" = "SC6nC<mleme"
+    ),
+    seviye = duzey_tr(seviye)
+  ) |>
+  transmute(
+    `FaktC6r` = faktor,
+    `Seviye` = seviye,
+    `Ortalama sapma` = sapma_ort,
+    `Ortalama toparlanma` = toparlanma_ort,
+    `Ortalama skor` = skor_ort,
+    `Ortalama enerji` = enerji_ort
+  )
+
+eksik_deger_tablo <- veri |>
+  summarise(across(everything(), ~ sum(is.na(.x)))) |>
+  pivot_longer(everything(), names_to = "DeDiEken", values_to = "Eksik deDer sayD1sD1")
+```
+
+```{=html}
+<style>
+:root {
+  --m4-koyu: #1F3D3A;
+  --m4-yesil: #2A9D8F;
+  --m4-mint: #8FD6C8;
+  --m4-acik: #D8F3EC;
+  --m4-nC6tr: #5B7C78;
+}
+
+table.table {
+  border: 1px solid rgba(31, 61, 58, 0.18);
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 0.92rem;
+}
+
+table.table thead th {
+  background: var(--m4-koyu);
+  color: #ffffff;
+  border-color: var(--m4-koyu);
+}
+
+table.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: rgba(216, 243, 236, 0.60);
+}
+
+table.table-hover > tbody > tr:hover > * {
+  background-color: rgba(143, 214, 200, 0.28);
+}
+
+caption {
+  color: var(--m4-koyu);
+  font-weight: 700;
+}
+</style>
+```
+
+# Proje Genel BakD1E ve KapsamD1
+
+Bu projede, mC<himmat kullanmayan elektronik bir eDitim simC<latC6rC<nde geri tepme davranD1ED1nD1 temsil eden sentetik bir deney veri seti R programlama dili ile analiz edilmektedir. Elektronik eDitim simC<latC6rlerinde temel amaC', kullanD1cD1ya gC<venli bir ortamda gerC'ekC'i bir eDitim deneyimi sunmaktD1r. Bu tC<r sistemlerde geri tepme hissinin C'ok zayD1f olmasD1 eDitim gerC'ekC'iliDini azaltabilir; buna karED1lD1k geri tepme davranD1ED1nD1n C'ok sert, uzun sC<reli veya kontrolsC<z olmasD1 kullanD1cD1 deneyimini ve sistem gC<venilirliDini olumsuz etkileyebilir.
+
+Bu nedenle bu C'alD1Emada geri tepme davranD1ED1 tek bir performans gC6stergesiyle deDil, birden fazla kriterin birlikte deDerlendirilmesiyle ele alD1nmD1EtD1r. Analizde sapma, toparlanma sC<resi, gerC'ekC'ilik skoru ve enerji yC<kC< birlikte incelenmektedir. Sapma ve gerC'ekC'ilik skoru eDitim hissinin yeterliliDini temsil ederken, toparlanma sC<resi ve enerji yC<kC< sistemin kontrol edilebilirliDi ve uygulanabilirliDi hakkD1nda bilgi vermektedir.
+
+Projenin temel karar sorusu Eudur: FarklD1 faktC6r seviyeleri arasD1nda, sentetik deney senaryosu iC'inde en dengeli geri tepme davranD1ED1nD1 hangi ayar kombinasyonu saDlamaktadD1r? Bu soruya yanD1t verebilmek iC'in faktC6r seviyeleri arasD1ndaki farklar C6zet tablolar, grafikler ve C'oklu yanD1t kalite indeksi yardD1mD1yla incelenmiEtir.
+
+CalD1Ema kapsamD1nda dC6rt temel faktC6r ele alD1nmD1EtD1r: aktC<atC6r sC<rC<E seviyesi, darbe sC<resi, hareketli kC<tle seviyesi ve sC6nC<mleme seviyesi. Bu faktC6rlerin her biri iki seviyede deDerlendirilmiE ve her kombinasyon iC'in iki tekrar olacak Eekilde toplam 32 gC6zlemden oluEan bir sentetik veri seti kullanD1lmD1EtD1r.
+
+CalD1EmanD1n ana odaDD1 ileri istatistiksel testlerden C'ok, MUY665 dersinde iElenen iE analitiDi sC<recini uygulamaktD1r. Bu nedenle proje; veri okuma, veri dC<zenleme, keEifsel veri analizi, gC6rselleEtirme, C6zet tablo oluEturma ve karar desteDi adD1mlarD1 C<zerinden ilerlemektedir. R tarafD1nda `readr`, `dplyr`, `tidyr`, `stringr` ve `ggplot2` paketleri kullanD1larak ders notlarD1nda yer alan temel veri analitiDi yaklaED1mlarD1 uygulanmD1EtD1r.
+
+Veri seti sentetik/senaryo tabanlD1 olarak hazD1rlanmD1EtD1r, bulgular gerC'ek bir fiziksel sistemin kesin sonucu olarak yorumlanmamalD1dD1r. Buna karED1lD1k C'alD1Ema, gerC'ek test verisi elde edildiDinde aynD1 analiz akD1ED1nD1n nasD1l yeniden C'alD1EtD1rD1labileceDini gC6steren tekrarlanabilir bir iE analitiDi C6rneDi sunmaktadD1r.
+
+# Veri
+
+## Veri KaynaDD1
+
+Bu C'alD1Emada kullanD1lan veri seti gerC'ek saha veya test C6lC'C<mC< deDildir. Veri, mC<himmat kullanmayan elektronik eDitim simC<latC6rC<nC<n geri tepme davranD1ED1nD1 temsil etmek amacD1yla oluEturulmuE sentetik/senaryo tabanlD1 deney verisidir.
+
+Bu nedenle bulgular, gerC'ek bir fiziksel sistemin kesin performans kanD1tD1 olarak deDil, R ile iE analitiDi yC6ntemlerinin yeniden C<retilebilir bir uygulamasD1 olarak yorumlanmalD1dD1r.
+
+Veri kaynaDD1nD1n sentetik olarak seC'ilmesinin temel nedeni, gerC'ek bir prototip veya saha testinden C6lC'C<m alD1nmamD1E olmasD1dD1r. Bu durum, C'alD1EmanD1n sD1nD1rlD1lD1DD1 olmakla birlikte aynD1 zamanda ders kapsamD1nda C6Drenilen R tabanlD1 veri analitiDi sC<recini kontrollC< bir veri seti C<zerinde uygulama olanaDD1 saDlamaktadD1r. Bu nedenle veri seti, gerC'ek sistem davranD1ED1nD1 birebir temsil eden bir C6lC'C<m kaydD1 olarak deDil, karar analitiDi yaklaED1mD1nD1 gC6stermek iC'in oluEturulmuE bir C'alD1Ema verisi olarak ele alD1nmD1EtD1r.
+
+## Veri HakkD1nda Genel Bilgiler
+
+Veri seti dC6rt faktC6r ve dC6rt yanD1t deDiEkeninden oluEmaktadD1r. DC6rt faktC6rC<n her biri iki seviyede ele alD1nmD1E, her kombinasyon iki tekrar ile gC6zlemlenmiE ve toplam 32 gC6zlem elde edilmiEtir.
+
+FaktC6rler, sistem C<zerinde deDiEtirilebilir ayarlarD1 temsil etmektedir:
+
+-   `A - AktC<atC6r sC<rC<E seviyesi`: AktC<atC6rC<n geri tepme etkisini oluEturmak iC'in ne kadar gC<C'lC< C'alD1EtD1rD1ldD1DD1nD1 ifade eder. DC<EC<k sC<rC<E seviyesi daha yumuEak bir tepki C<retirken, yC<ksek sC<rC<E seviyesi daha belirgin bir geri tepme hissi oluEturabilir.
+-   `B - Darbe sC<resi`: Geri tepme etkisinin ne kadar sC<reyle uygulandD1DD1nD1 gC6sterir. KD1sa darbe sC<resi daha ani ve kontrollC< bir etkiyi, uzun darbe sC<resi ise daha yayD1lmD1E ve toparlanmasD1 daha zor olabilecek bir etkiyi temsil eder.
+-   `C - Hareketli kC<tle seviyesi`: SimC<latC6r iC'inde geri tepme hissini oluEturan hareketli parC'anD1n kC<tle dC<zeyini temsil eder. Daha yC<ksek kC<tle, geri tepme hissini gC<C'lendirebilir; ancak sistemin toparlanma davranD1ED1nD1 da etkileyebilir.
+-   `D - SC6nC<mleme seviyesi`: Geri tepme sonrasD1 hareketin ne kadar hD1zlD1 bastD1rD1ldD1DD1nD1 veya dengelendiDini ifade eder. YC<ksek sC6nC<mleme, sistemin daha kontrollC< biC'imde toparlanmasD1na yardD1mcD1 olabilir.
+
+YanD1t deDiEkenleri ise her deney koEulunda sistemin nasD1l davrandD1DD1nD1 C6lC'mek iC'in kullanD1lan performans gC6stergeleridir:
+
+-   `Sapma`: Geri tepme sonrasD1nda niEan hattD1nda veya simC<latC6r ekseninde oluEan sapma dC<zeyini temsil eder. Cok dC<EC<k sapma gerC'ekC'ilik hissini azaltabilir; C'ok yC<ksek sapma ise kontrolC< zorlaEtD1rabilir.
+-   `Toparlanma`: Geri tepme etkisinden sonra sistemin yeniden kararlD1 hale gelmesi iC'in gereken sC<reyi temsil eder. Daha dC<EC<k toparlanma sC<resi, kullanD1cD1nD1n bir sonraki harekete daha hD1zlD1 hazD1rlanabilmesi aC'D1sD1ndan avantajlD1dD1r.
+-   `Skor`: Geri tepme davranD1ED1nD1n kullanD1cD1 tarafD1ndan ne kadar gerC'ekC'i algD1lanabileceDini temsil eden sentetik bir deDerlendirme skorudur. Bu deDiEkende yC<ksek deDer daha olumlu kabul edilmiEtir.
+-   `Enerji`: Geri tepme etkisini oluEturmak iC'in gereken enerji yC<kC<nC< temsil eder. Enerji deDerinin C'ok yC<kselmesi, gerC'ek bir sistemde batarya tC<ketimi, D1sD1nma veya mekanik zorlanma gibi konular aC'D1sD1ndan risk oluEturabilir.
+
+Bu yapD1, her faktC6r kombinasyonunun sistem davranD1ED1 C<zerindeki etkisini karED1laEtD1rmaya imkan verir. CrneDin yC<ksek sC<rC<E seviyesi geri tepme hissini artD1rabilir; ancak aynD1 zamanda enerji yC<kC<nC< veya toparlanma sC<resini de artD1rabilir. Benzer Eekilde yC<ksek sC6nC<mleme, sistemin daha kontrollC< toparlanmasD1na yardD1mcD1 olabilir fakat gerC'ekC'ilik algD1sD1 C<zerindeki etkisi diDer faktC6rlerle birlikte deDerlendirilmelidir. Bu nedenle veri seti, tek deDiEkenli bir sD1ralama yapmak yerine C'ok kriterli bir karar problemi olarak yorumlanmD1EtD1r.
+
+```{r}
+#| label: veri-yapisi
+#| echo: false
+
+tablo_html(veri_onizleme_tablo, "Veri setinden ilk sekiz gC6zlem")
+```
+
+## Veri Okuma ve Cn D0Eleme
+
+Veriler CSV formatD1nda R ortamD1na aktarD1lmD1EtD1r. Ders notlarD1nda yer alan `readr`, `dplyr`, `tidyr` ve `stringr` paketleri kullanD1larak veri okunmuE, faktC6r deDiEkenleri dC<zenlenmiE, kombinasyon etiketi oluEturulmuE ve grafikler iC'in uzun formata C'evrilmiEtir.
+
+Cn iEleme aEamasD1nda C6ncelikle veri setinde eksik deDer olup olmadD1DD1 kontrol edilmiEtir. Daha sonra `A`, `B`, `C` ve `D` deDiEkenleri karakter veri tipinden faktC6r yapD1sD1na dC6nC<EtC<rC<lmC<EtC<r. Bu dC6nC<EC<m C6nemlidir; C'C<nkC< bu deDiEkenler sayD1sal bC<yC<klC<k deDil, kategorik deney seviyelerini temsil etmektedir. AyrD1ca grafiklerde ve C6zet tablolarda daha okunabilir bir yapD1 elde etmek iC'in her satD1rda faktC6r kombinasyonunu gC6steren ek bir etiket oluEturulmuEtur.
+
+Grafik ve C6zet analizlerde daha esnek C'alD1Eabilmek iC'in veri seti uzun formata da C'evrilmiEtir. BC6ylece `Sapma`, `Toparlanma`, `Skor` ve `Enerji` deDiEkenleri aynD1 yapD1 iC'inde karED1laEtD1rD1labilir hale getirilmiEtir. Bu adD1m, ders notlarD1nda anlatD1lan tidy data yaklaED1mD1na uygun bir dC<zenleme adD1mD1dD1r.
+
+AEaDD1daki tablo, analizde kullanD1lan 32 gC6zlemli ham sentetik veri setinin tamamD1nD1 gC6stermektedir. Tabloda her satD1r bir deney koEulunu; faktC6r sC<tunlarD1 ilgili ayarD1; son dC6rt sC<tun ise bu ayar altD1nda elde edilen sentetik yanD1t deDerlerini gC6stermektedir.
+
+```{r}
+#| label: ham-veri-tablosu
+#| echo: false
+
+tablo_html(ham_veri_tablo, "Analizde kullanD1lan ham sentetik veri seti")
+```
+
+```{r}
+#| label: veri-on-isleme-kodu
+
+veri_ornek <- read_csv(proje_yolu("data/03_m4_temiz_veri.csv"), show_col_types = FALSE)
+
+veri_ornek <- veri_ornek |>
+  mutate(
+    A = factor(A, levels = c("Dusuk", "Yuksek")),
+    B = factor(B, levels = c("Kisa", "Uzun")),
+    C = factor(C, levels = c("Dusuk", "Yuksek")),
+    D = factor(D, levels = c("Dusuk", "Yuksek")),
+    kombinasyon = str_c("A=", A, " | B=", B, " | C=", C, " | D=", D)
+  )
+
+eksik_deger_tablo |>
+  tablo_html("Cn iEleme sonrasD1 eksik deDer kontrolC<")
+```
+
+# KeEifsel Veri Analizi
+
+D0lk adD1mda veri setinin genel yapD1sD1 ve sayD1sal deDiEkenlerin temel C6zetleri incelenmiEtir. Bu adD1m, hangi deDiEkenlerin karar aC'D1sD1ndan daha belirleyici olabileceDini anlamak iC'in kullanD1lmD1EtD1r.
+
+KeEifsel veri analizi, bu projede yalnD1zca tablo C<retmek iC'in deDil, sonraki grafik ve karar adD1mlarD1nD1 yC6nlendirmek iC'in kullanD1lmD1EtD1r. Ortalama, minimum ve maksimum deDerler incelenerek deDiEkenlerin hangi aralD1kta deDiEtiDi gC6rC<lmC<EtC<r. BC6ylece C6rneDin gerC'ekC'ilik skoru yC<ksek olan ayarlarD1n enerji yC<kC< bakD1mD1ndan da kabul edilebilir olup olmadD1DD1 tartD1ED1labilir hale gelmiEtir.
+
+```{r}
+#| label: degisken-ozeti
+#| echo: false
+
+tablo_html(degisken_ozeti_tablo, "SayD1sal deDiEkenlerin genel C6zeti")
+```
+
+FaktC6r seviyelerine gC6re ortalamalar incelendiDinde, C6zellikle sC<rC<E seviyesi ve darbe sC<resinin sapma, toparlanma ve gerC'ekC'ilik skoru C<zerinde belirgin farklar oluEturduDu gC6rC<lmektedir.
+
+Bu tablo, her faktC6rC<n tek baED1na ortalama etkisini gC6rmeye yardD1mcD1 olur. Ancak faktC6rlerin birlikte C'alD1EtD1DD1 unutulmamalD1dD1r. Bir ayarD1n iyi veya kC6tC< olarak sD1nD1flandD1rD1lmasD1 yalnD1zca sC<rC<E seviyesi ya da darbe sC<resine baDlD1 deDildir; kC<tle ve sC6nC<mleme seviyesi de sonuC'larD1 deDiEtirebilir. Bu nedenle grafiklerle analiz bC6lC<mC<nde deDiEkenler birlikte yorumlanmD1EtD1r.
+
+```{r}
+#| label: faktor-ozetleri
+#| echo: false
+
+tablo_html(faktor_ozetleri_tablo, "FaktC6r seviyelerine gC6re ortalama yanD1tlar")
+```
+
+Bu bC6lC<mdeki tablolar, Grafik 1'in temelini oluEturmaktadD1r. Cnce her faktC6r seviyesi ve her kombinasyon iC'in sapma, toparlanma, gerC'ekC'ilik skoru ve enerji deDerleri C6zetlenmiEtir. Daha sonra C6zellikle `Skor` deDiEkeni kullanD1larak her faktC6r kombinasyonunun ortalama gerC'ekC'ilik skoru hesaplanmD1EtD1r. Grafik 1, bu hesaplanan ortalama gerC'ekC'ilik skorlarD1nD1 gC6rselleEtirerek hangi ayar kombinasyonlarD1nD1n kullanD1cD1 algD1sD1 aC'D1sD1ndan daha gC<C'lC< gC6rC<ndC<DC<nC< karED1laEtD1rmalD1 biC'imde gC6stermektedir.
+
+# Grafiklerle Analiz
+
+Bu bC6lC<mde grafiklerde ve tablolarda ortak bir yeEil/teal renk standardD1 kullanD1lmD1EtD1r. Koyu yeEil ana vurgu ve baElD1k rengini, canlD1 yeEil gC<C'lC< sonuC'larD1, mint tonu orta seviyedeki durumlarD1, nC6tr yeEil-gri ton ise daha dC<EC<k performans gC6steren adaylarD1 temsil etmektedir. BC6ylece farklD1 grafiklerde kullanD1lan renklerin aynD1 gC6rsel dil iC'inde okunmasD1 amaC'lanmD1EtD1r.
+
+## Grafik 1: FaktC6r KombinasyonlarD1na GC6re GerC'ekC'ilik Skoru
+
+Grafiklerde kullanD1lan kD1saltmalar veri setindeki faktC6rleri temsil etmektedir: `A` aktC<atC6r sC<rC<E seviyesini, `B` darbe sC<resini, `C` hareketli kC<tle seviyesini ve `D` sC6nC<mleme seviyesini ifade etmektedir. CrneDin `A:YC<ksek | B:KD1sa | C:YC<ksek | D:YC<ksek` ifadesi; aktC<atC6r sC<rC<EC<nC<n yC<ksek, darbe sC<resinin kD1sa, hareketli kC<tlenin yC<ksek ve sC6nC<mlemenin yC<ksek olduDu ayar kombinasyonunu gC6stermektedir.
+
+```{r}
+#| label: grafik-1
+#| echo: false
+#| fig-cap: "FaktC6r kombinasyonlarD1na gC6re ortalama gerC'ekC'ilik skoru"
+
+knitr::include_graphics(proje_yolu("outputs/figures/grafik_01_gercekcilik_skoru.png"))
+```
+
+Bu grafik, gerC'ekC'ilik skorunun faktC6r kombinasyonlarD1na gC6re deDiEtiDini gC6stermektedir. En yC<ksek skorlar genellikle sC<rC<E seviyesinin yC<ksek ve darbe sC<resinin kD1sa olduDu kombinasyonlarda ortaya C'D1kmaktadD1r. Bu durum, sentetik senaryoda geri tepme hissinin gC<C'lC< fakat kontrol edilebilir olduDu ayarlarD1n daha olumlu deDerlendirildiDini gC6stermektedir.
+
+Grafik aynD1 zamanda tC<m kombinasyonlarD1n birbirine yakD1n performans gC6stermediDini de ortaya koymaktadD1r. BazD1 ayarlar yC<ksek gerC'ekC'ilik saDlarken bazD1larD1 belirgin biC'imde geride kalmaktadD1r. Bu fark, karar vericinin yalnD1zca faktC6r seviyelerini tek tek deDil, kombinasyon mantD1DD1yla deDerlendirmesi gerektiDini gC6stermektedir.
+
+Grafik 1'de C<st sD1ralarda yer alan kombinasyonlar incelendiDinde, yC<ksek aktC<atC6r sC<rC<E seviyesinin gerC'ekC'ilik algD1sD1nD1 artD1ran C6nemli bir unsur olduDu gC6rC<lmektedir. Ancak yalnD1zca sC<rC<E seviyesinin yC<ksek olmasD1 yeterli deDildir; darbe sC<resinin kD1sa olmasD1 da ayarD1n daha dengeli algD1lanmasD1na katkD1 saDlamaktadD1r. Uzun darbe sC<resi kullanD1lan bazD1 kombinasyonlarda gerC'ekC'ilik skoru dC<Emektedir. Bu durum, geri tepme etkisinin gC<C'lC< olmasD1nD1n yanD1nda sC<resinin de kontrol edilebilir olmasD1 gerektiDini gC6stermektedir.
+
+KC<tle ve sC6nC<mleme seviyeleri ise C<st sD1ralardaki kombinasyonlarD1n kendi iC'indeki sD1ralamasD1nD1 deDiEtirmektedir. Czellikle yC<ksek sC6nC<mleme, geri tepme sonrasD1 sistemin daha kontrollC< davranmasD1na katkD1 sunduDu iC'in gerC'ekC'ilik algD1sD1nD1 dolaylD1 olarak destekleyebilir. Bu nedenle Grafik 1, tek bir faktC6rC<n etkisinden C'ok faktC6rlerin birlikte oluEturduDu ayar profilinin C6nemli olduDunu gC6stermektedir.
+
+## Grafik 2: Sapma ve Toparlanma SC<resi D0liEkisi
+
+```{r}
+#| label: grafik-2
+#| echo: false
+#| fig-cap: "Sapma ve toparlanma sC<resi iliEkisi"
+
+knitr::include_graphics(proje_yolu("outputs/figures/grafik_02_sapma_toparlanma.png"))
+```
+
+Sapma ile toparlanma sC<resi birlikte incelendiDinde, daha yC<ksek sapma C<reten ayarlarD1n her zaman daha iyi olmadD1DD1 gC6rC<lmektedir. CC<nkC< yC<ksek sapma, toparlanma sC<resini uzatarak kullanD1cD1 kontrolC<nC< zorlaEtD1rabilir. Bu nedenle karar yalnD1zca tek bir deDiEkene gC6re verilmemelidir.
+
+Bu grafik iE analitiDi aC'D1sD1ndan C6nemli bir denge problemini gC6stermektedir. EDitim simC<latC6rC<nde sapmanD1n C'ok dC<EC<k olmasD1 gerC'ekC'ilik hissini zayD1flatabilir; ancak sapmanD1n C'ok yC<ksek olmasD1 da kullanD1cD1nD1n hedefe geri dC6nmesini zorlaEtD1rabilir. Bu nedenle ideal ayar, yC<ksek sapma C<reten deDil, yeterli sapma ile makul toparlanma sC<resini birlikte saDlayan ayardD1r.
+
+Grafik 2'de noktalarD1n konumu, her deney koEulunda sapma ve toparlanma sC<resinin birlikte nasD1l deDiEtiDini gC6stermektedir. Renk tonlarD1 gerC'ekC'ilik skorunu temsil ettiDi iC'in yalnD1zca eksenlere deDil, noktanD1n rengine de bakmak gerekir. Daha koyu renkli noktalar daha yC<ksek gerC'ekC'ilik skoruna karED1lD1k gelmektedir. Bu sayede, yC<ksek gerC'ekC'ilik skoru saDlayan ayarlarD1n aynD1 zamanda kabul edilebilir toparlanma sC<resine sahip olup olmadD1DD1 gC6rsel olarak deDerlendirilebilir.
+
+Grafikte gC6rC<len temel C'D1karD1m, kararD1n tek boyutlu olmadD1DD1dD1r. SaD tarafa doDru gidildikC'e sapma artmakta, yukarD1 doDru gidildikC'e toparlanma sC<resi uzamaktadD1r. D0deal bC6lge, C'ok dC<EC<k sapmanD1n olmadD1DD1 fakat toparlanma sC<resinin de aED1rD1 yC<kselmediDi orta-C<st denge alanD1dD1r. Bu nedenle Grafik 2, sonraki C'oklu yanD1t kalite indeksinin neden gerekli olduDunu desteklemektedir: C'C<nkC< gerC'ekC'ilik, sapma ve toparlanma aynD1 anda deDerlendirilmeden gC<venilir bir karar C6nerisi C<retmek zordur.
+
+## Grafik 3: SC6nC<mleme Seviyesine GC6re Toparlanma SC<resi
+
+```{r}
+#| label: grafik-3
+#| echo: false
+#| fig-cap: "SC6nC<mleme seviyesine gC6re toparlanma sC<resi"
+
+knitr::include_graphics(proje_yolu("outputs/figures/grafik_03_toparlanma_boxplot.png"))
+```
+
+Boxplot grafiDi, sC6nC<mleme seviyesinin toparlanma sC<resi C<zerindeki etkisini gC6rsel olarak karED1laEtD1rmaktadD1r. YC<ksek sC6nC<mleme seviyesi, geri tepme sonrasD1 sistemin daha kontrollC< davranmasD1na yardD1mcD1 olan bir faktC6r olarak yorumlanabilir.
+
+Kutu grafiDi daDD1lD1mD1 gC6stermesi aC'D1sD1ndan C6zellikle yararlD1dD1r. Sadece ortalamaya bakmak yerine, toparlanma sC<resinin hangi aralD1kta deDiEtiDi ve deDerlerin ne kadar yayD1ldD1DD1 gC6rC<lebilir. Bu da karar sC<recinde kararlD1lD1k ve tutarlD1lD1k aC'D1sD1ndan ek bilgi saDlar.
+
+## Grafik 4: Enerji YC<kC< ve GerC'ekC'ilik Skoru D0liEkisi
+
+```{r}
+#| label: grafik-4
+#| echo: false
+#| fig-cap: "Enerji yC<kC< ve gerC'ekC'ilik skoru iliEkisi"
+
+knitr::include_graphics(proje_yolu("outputs/figures/grafik_04_enerji_skor.png"))
+```
+
+Enerji yC<kC< ile gerC'ekC'ilik skoru arasD1nda doDrudan ve tek yC6nlC< bir karar vermek uygun deDildir. BazD1 ayarlar daha yC<ksek gerC'ekC'ilik skoru C<retse de enerji yC<kC< de artabilmektedir. Bu nedenle proje kapsamD1nda enerji yC<kC<, karar skorunda dengeleyici bir kriter olarak ele alD1nmD1EtD1r.
+
+Bu bC6lC<mde amaC', "en gerC'ekC'i his" ile "uygulanabilir enerji yC<kC<" arasD1ndaki iliEkiyi tartD1EmaktD1r. GerC'ek bir sistemde enerji yC<kC<nC<n artmasD1 batarya kullanD1mD1, aktC<atC6r D1sD1nmasD1 veya uzun dC6nem gC<venilirlik gibi konularda risk oluEturabilir. Bu nedenle gerC'ekC'ilik skoru yC<ksek olan bir ayar, enerji yC<kC< C'ok yC<ksekse doDrudan en iyi seC'enek olarak kabul edilmemelidir.
+
+## Grafik 5: FaktC6r Seviyelerine GC6re Ortalama Skor
+
+```{r}
+#| label: grafik-5
+#| echo: false
+#| fig-cap: "FaktC6r seviyelerine gC6re ortalama gerC'ekC'ilik skoru"
+
+knitr::include_graphics(proje_yolu("outputs/figures/grafik_05_faktor_skor.png"))
+```
+
+Bu grafik, her faktC6rC<n seviyelerine gC6re ortalama gerC'ekC'ilik skorunu gC6stermektedir. Ders notlarD1nda vurgulanan gC6rselleEtirme prensiplerine uygun olarak, kategorik seviyeler grafik C<zerinden karED1laEtD1rD1lmD1E ve karar aC'D1sD1ndan anlamlD1 farklar aranmD1EtD1r.
+
+Grafik, faktC6r seviyelerinin etkisini sade bir biC'imde okumaya yardD1mcD1 olur. Bu tC<r bir gC6rselleEtirme, karar vericiye hangi faktC6rlerin daha dikkatle izlenmesi gerektiDini gC6sterir. Czellikle gerC'ekC'ilik skoru aC'D1sD1ndan gC<C'lC< gC6rC<nen seviyeler, sonraki C'oklu yanD1t deDerlendirmesinde diDer kriterlerle birlikte yeniden ele alD1nmD1EtD1r.
+
+# Coklu YanD1t DeDerlendirmesi
+
+Tek bir performans gC6stergesine bakmak yerine sapma, toparlanma sC<resi, gerC'ekC'ilik skoru ve enerji yC<kC< birlikte deDerlendirilmiEtir. Bu amaC'la her aday kombinasyon iC'in 0-100 aralD1DD1nda bir kalite indeksi hesaplanmD1EtD1r.
+
+Kalite indeksinde amaC', farklD1 yC6nlerde yorumlanan deDiEkenleri ortak bir karar C6lC'C<sC<ne dC6nC<EtC<rmektir. GerC'ekC'ilik skorunun yC<ksek olmasD1 olumlu kabul edilirken, toparlanma sC<resi ve enerji yC<kC<nC<n daha dC<EC<k olmasD1 tercih edilmiEtir. Sapma iC'in ise hedefe yakD1nlD1k mantD1DD1 kullanD1lmD1EtD1r; C'C<nkC< sapmanD1n ne C'ok dC<EC<k ne de aED1rD1 yC<ksek olmasD1 istenmektedir.
+
+```{r}
+#| label: karar-tablosu
+#| tbl-cap: "Kalite indeksine gC6re en iyi aday kombinasyonlar"
+
+karar_tablosu |>
+  select(kombinasyon_kisa, sapma_ort, toparlanma_ort, skor_ort, enerji_ort, kalite_indeksi, karar_sinifi) |>
+  head(8) |>
+  rename(
+    `FaktC6r kombinasyonu` = kombinasyon_kisa,
+    `Ortalama sapma` = sapma_ort,
+    `Ortalama toparlanma` = toparlanma_ort,
+    `Ortalama skor` = skor_ort,
+    `Ortalama enerji` = enerji_ort,
+    `Kalite indeksi` = kalite_indeksi,
+    `Karar sD1nD1fD1` = karar_sinifi
+  ) |>
+  tablo_html("Kalite indeksine gC6re en iyi aday kombinasyonlar")
+```
+
+```{r}
+#| label: grafik-6
+#| echo: false
+#| fig-cap: "Coklu yanD1t kalite indeksine gC6re aday kombinasyonlar"
+
+knitr::include_graphics(proje_yolu("outputs/figures/grafik_06_coklu_yanit_skoru.png"))
+```
+
+Coklu yanD1t kalite indeksine gC6re en gC<C'lC< aday kombinasyon `A=Yuksek`, `B=Kisa`, `C=Yuksek`, `D=Yuksek` olarak belirlenmiEtir. Bu ayar, sentetik senaryo iC'inde yC<ksek gerC'ekC'ilik skoru saDlarken sapma, toparlanma ve enerji yC<kC< arasD1nda daha dengeli bir sonuC' vermektedir.
+
+D0lk C<C' adayD1n tamamD1nda sC<rC<E seviyesinin yC<ksek ve darbe sC<resinin kD1sa olmasD1 dikkat C'ekicidir. Bu sonuC', sentetik senaryoda gC<C'lC< fakat kD1sa sC<reli bir etkinin daha avantajlD1 olduDunu dC<EC<ndC<rmektedir. Bununla birlikte kC<tle ve sC6nC<mleme seviyeleri adaylarD1n sD1ralamasD1nD1 deDiEtirmektedir. Bu nedenle karar C6nerisi tek bir faktC6re indirgenmemiE, tC<m yanD1tlarD1n birlikte deDerlendirildiDi kalite indeksi C<zerinden yapD1lmD1EtD1r.
+
+# SonuC'lar ve Ana CD1karD1mlar
+
+Bu C'alD1Emada M4 elektronik eDitim simC<latC6rC< iC'in sentetik deney verisi C<zerinden R tabanlD1 bir iE analitiDi akD1ED1 kurulmuEtur. Veri okuma, dC<zenleme, C6zetleme, gC6rselleEtirme ve C'oklu kriterli karar skoru adD1mlarD1 birlikte kullanD1lmD1EtD1r.
+
+Ana C'D1karD1mlar:
+
+-   En yC<ksek geri tepme hissi her zaman en iyi ayar anlamD1na gelmemektedir.
+-   Toparlanma sC<resi ve enerji yC<kC< karar sC<recinde mutlaka dikkate alD1nmalD1dD1r.
+-   Sentetik senaryo iC'inde en dengeli aday `A=Yuksek`, `B=Kisa`, `C=Yuksek`, `D=Yuksek` kombinasyonudur.
+-   R ile hazD1rlanan bu analiz akD1ED1, gerC'ek test verisi elde edildiDinde aynD1 Eekilde tekrar C'alD1EtD1rD1labilir.
+
+Genel olarak bu C'alD1Ema, iE analitiDi yaklaED1mD1nD1n yalnD1zca geC'miE verileri C6zetlemekten ibaret olmadD1DD1nD1 gC6stermektedir. Veri dC<zenleme, gC6rselleEtirme ve karar skoru adD1mlarD1 birlikte kullanD1ldD1DD1nda, karmaED1k gC6rC<nen teknik bir problem daha anlaED1lD1r bir karar problemine dC6nC<EtC<rC<lebilmektedir. Bu yC6nC<yle proje, MUY665 dersinde ele alD1nan tanD1mlayD1cD1 analitik ve karar desteDi yaklaED1mD1nD1 uygulamalD1 bir C6rnek C<zerinden gC6stermektedir.
+
+# KD1sD1tlar ve Etik Not
+
+Bu C'alD1Ema gerC'ek saha veya laboratuvar test verisi iC'ermemektedir. Veri seti sentetik/senaryo tabanlD1 olduDu iC'in bulgular gerC'ek bir fiziksel sistemin kesin performans kanD1tD1 olarak yorumlanmamalD1dD1r. GerC'ek uygulama iC'in pilot test, C6lC'C<m sistemi analizi ve fiziksel doDrulama gereklidir.
+
+Bu proje kapsamD1nda yapay zeka desteDi; proje planD1nD1n dC<zenlenmesi, R kod akD1ED1nD1n yapD1landD1rD1lmasD1, Quarto rapor taslaDD1nD1n hazD1rlanmasD1 ve yazD1lD1 anlatD1mD1n iyileEtirilmesi amacD1yla kullanD1lmD1EtD1r.
+
+# Kaynaklar
+
+-   MUY665 D0E AnalitiDi ders notlarD1, 2025-2026 Bahar DC6nemi.
+-   MUY665 2023-2024 Bahar dC6nemi C6rnek proje sayfalarD1.
+-   Quarto dokC<mantasyonu: <https://quarto.org/>
+-   R paketleri: `readr`, `dplyr`, `tidyr`, `stringr`, `ggplot2`.
+
+
