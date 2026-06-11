@@ -1,0 +1,1899 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>proje_calisan_temiz – Eylul Isil Altiparmak'in Analitik Labi</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-11563d2f55764b9d6a488f24f91d801a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-510d05b16ce075d26a3ac718e0ab7c7d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-11563d2f55764b9d6a488f24f91d801a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Eylul Isil Altiparmak’in Analitik Labi</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Anasayfa</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">Hakkimda</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../posts.html"> 
+<span class="menu-text">Project</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-muy665-ders-ciktilari" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">MUY665 Ders Ciktilari</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-muy665-ders-ciktilari">    
+        <li>
+    <a class="dropdown-item" href="../portfolyo.html">
+ <span class="dropdown-text">Odevler</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../project.html">
+ <span class="dropdown-text">Proje</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://github.com/emu-hacettepe-analytics/muy665-bahar2026-Eylul-Isil-Altiparmak" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://x.com/Eyllaltiparmak" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
+    <a href="https://linkedin.com/in/eylulisilaltiparmak/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#proje-genel-bakis-ve-kapsami" id="toc-proje-genel-bakis-ve-kapsami" class="nav-link active" data-scroll-target="#proje-genel-bakis-ve-kapsami">Proje Genel Bakis ve Kapsami</a></li>
+  <li><a href="#veri" id="toc-veri" class="nav-link" data-scroll-target="#veri">Veri</a>
+  <ul class="collapse">
+  <li><a href="#veri-kaynagi" id="toc-veri-kaynagi" class="nav-link" data-scroll-target="#veri-kaynagi">Veri Kaynagi</a></li>
+  <li><a href="#veri-hakkinda-genel-bilgiler" id="toc-veri-hakkinda-genel-bilgiler" class="nav-link" data-scroll-target="#veri-hakkinda-genel-bilgiler">Veri Hakkinda Genel Bilgiler</a></li>
+  <li><a href="#veri-okuma-ve-on-isleme" id="toc-veri-okuma-ve-on-isleme" class="nav-link" data-scroll-target="#veri-okuma-ve-on-isleme">Veri Okuma ve On Isleme</a></li>
+  </ul></li>
+  <li><a href="#kesifsel-veri-analizi" id="toc-kesifsel-veri-analizi" class="nav-link" data-scroll-target="#kesifsel-veri-analizi">Kesifsel Veri Analizi</a></li>
+  <li><a href="#grafiklerle-analiz" id="toc-grafiklerle-analiz" class="nav-link" data-scroll-target="#grafiklerle-analiz">Grafiklerle Analiz</a>
+  <ul class="collapse">
+  <li><a href="#grafik-1-faktor-kombinasyonlarina-gore-gercekcilik-skoru" id="toc-grafik-1-faktor-kombinasyonlarina-gore-gercekcilik-skoru" class="nav-link" data-scroll-target="#grafik-1-faktor-kombinasyonlarina-gore-gercekcilik-skoru">Grafik 1: Faktor Kombinasyonlarina Gore Gercekcilik Skoru</a></li>
+  <li><a href="#grafik-2-sapma-ve-toparlanma-suresi-iliskisi" id="toc-grafik-2-sapma-ve-toparlanma-suresi-iliskisi" class="nav-link" data-scroll-target="#grafik-2-sapma-ve-toparlanma-suresi-iliskisi">Grafik 2: Sapma ve Toparlanma Suresi Iliskisi</a></li>
+  <li><a href="#grafik-3-sonumleme-seviyesine-gore-toparlanma-suresi" id="toc-grafik-3-sonumleme-seviyesine-gore-toparlanma-suresi" class="nav-link" data-scroll-target="#grafik-3-sonumleme-seviyesine-gore-toparlanma-suresi">Grafik 3: Sonumleme Seviyesine Gore Toparlanma Suresi</a></li>
+  <li><a href="#grafik-4-enerji-yuku-ve-gercekcilik-skoru-iliskisi" id="toc-grafik-4-enerji-yuku-ve-gercekcilik-skoru-iliskisi" class="nav-link" data-scroll-target="#grafik-4-enerji-yuku-ve-gercekcilik-skoru-iliskisi">Grafik 4: Enerji Yuku ve Gercekcilik Skoru Iliskisi</a></li>
+  <li><a href="#grafik-5-faktor-seviyelerine-gore-ortalama-skor" id="toc-grafik-5-faktor-seviyelerine-gore-ortalama-skor" class="nav-link" data-scroll-target="#grafik-5-faktor-seviyelerine-gore-ortalama-skor">Grafik 5: Faktor Seviyelerine Gore Ortalama Skor</a></li>
+  </ul></li>
+  <li><a href="#coklu-yanit-degerlendirmesi" id="toc-coklu-yanit-degerlendirmesi" class="nav-link" data-scroll-target="#coklu-yanit-degerlendirmesi">Coklu Yanit Degerlendirmesi</a></li>
+  <li><a href="#sonuclar-ve-ana-cikarimlar" id="toc-sonuclar-ve-ana-cikarimlar" class="nav-link" data-scroll-target="#sonuclar-ve-ana-cikarimlar">Sonuclar ve Ana Cikarimlar</a></li>
+  <li><a href="#kisitlar-ve-etik-not" id="toc-kisitlar-ve-etik-not" class="nav-link" data-scroll-target="#kisitlar-ve-etik-not">Kisitlar ve Etik Not</a></li>
+  <li><a href="#kaynaklar" id="toc-kaynaklar" class="nav-link" data-scroll-target="#kaynaklar">Kaynaklar</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+
+<p>o;?— title: “Elektronik Egitim Simulatorunde Geri Tepme Davranisinin Sentetik Veri ile Is Analitigi” subtitle: “MUY665 Is Analitigi Donem Projesi” author: - “Eylul Isil Altiparmak” - “Gizem Cetin” - “Selcan Islek” date: “2026-06-07” number-sections: true format: html: toc: true toc-location: left code-fold: true code-tools: true theme: simplex execute: echo: true warning: false message: false —</p>
+<style>
+:root {
+  --m4-koyu: #1F3D3A;
+  --m4-yesil: #2A9D8F;
+  --m4-mint: #8FD6C8;
+  --m4-acik: #D8F3EC;
+  --m4-notr: #5B7C78;
+}
+
+table.table {
+  border: 1px solid rgba(31, 61, 58, 0.18);
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 0.92rem;
+}
+
+table.table thead th {
+  background: var(--m4-koyu);
+  color: #ffffff;
+  border-color: var(--m4-koyu);
+}
+
+table.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: rgba(216, 243, 236, 0.60);
+}
+
+table.table-hover > tbody > tr:hover > * {
+  background-color: rgba(143, 214, 200, 0.28);
+}
+
+caption {
+  color: var(--m4-koyu);
+  font-weight: 700;
+}
+</style>
+<section id="proje-genel-bakis-ve-kapsami" class="level1">
+<h1>Proje Genel Bakis ve Kapsami</h1>
+<p>Bu projede, muhimmat kullanmayan elektronik bir egitim simulatorunde geri tepme davranisini temsil eden sentetik bir deney veri seti R programlama dili ile analiz edilmektedir. Elektronik egitim simulatorlerinde temel amac, kullaniciya guvenli bir ortamda gercekci bir egitim deneyimi sunmaktir. Bu tur sistemlerde geri tepme hissinin cok zayif olmasi egitim gercekciligini azaltabilir; buna karsilik geri tepme davranisinin cok sert, uzun sureli veya kontrolsuz olmasi kullanici deneyimini ve sistem guvenilirligini olumsuz etkileyebilir.</p>
+<p>Bu nedenle bu calismada geri tepme davranisi tek bir performans gostergesiyle degil, birden fazla kriterin birlikte degerlendirilmesiyle ele alinmistir. Analizde sapma, toparlanma suresi, gercekcilik skoru ve enerji yuku birlikte incelenmektedir. Sapma ve gercekcilik skoru egitim hissinin yeterliligini temsil ederken, toparlanma suresi ve enerji yuku sistemin kontrol edilebilirligi ve uygulanabilirligi hakkinda bilgi vermektedir.</p>
+<p>Projenin temel karar sorusu sudur: Farkli faktor seviyeleri arasinda, sentetik deney senaryosu icinde en dengeli geri tepme davranisini hangi ayar kombinasyonu saglamaktadir? Bu soruya yanit verebilmek icin faktor seviyeleri arasindaki farklar ozet tablolar, grafikler ve coklu yanit kalite indeksi yardimiyla incelenmistir.</p>
+<p>Calisma kapsaminda dort temel faktor ele alinmistir: aktuator surus seviyesi, darbe suresi, hareketli kutle seviyesi ve sonumleme seviyesi. Bu faktorlerin her biri iki seviyede degerlendirilmis ve her kombinasyon icin iki tekrar olacak sekilde toplam 32 gozlemden olusan bir sentetik veri seti kullanilmistir.</p>
+<p>Calismanin ana odagi ileri istatistiksel testlerden cok, MUY665 dersinde islenen is analitigi surecini uygulamaktir. Bu nedenle proje; veri okuma, veri duzenleme, kesifsel veri analizi, gorsellestirme, ozet tablo olusturma ve karar destegi adimlari uzerinden ilerlemektedir. R tarafinda <code>readr</code>, <code>dplyr</code>, <code>tidyr</code>, <code>stringr</code> ve <code>ggplot2</code> paketleri kullanilarak ders notlarinda yer alan temel veri analitigi yaklasimlari uygulanmistir.</p>
+<p>Veri seti sentetik/senaryo tabanli olarak hazirlanmistir, bulgular gercek bir fiziksel sistemin kesin sonucu olarak yorumlanmamalidir. Buna karsilik calisma, gercek test verisi elde edildiginde ayni analiz akisinin nasil yeniden calistirilabilecegini gosteren tekrarlanabilir bir is analitigi ornegi sunmaktadir.</p>
+</section>
+<section id="veri" class="level1">
+<h1>Veri</h1>
+<section id="veri-kaynagi" class="level2">
+<h2 class="anchored" data-anchor-id="veri-kaynagi">Veri Kaynagi</h2>
+<p>Bu calismada kullanilan veri seti gercek saha veya test olcumu degildir. Veri, muhimmat kullanmayan elektronik egitim simulatorunun geri tepme davranisini temsil etmek amaciyla olusturulmus sentetik/senaryo tabanli deney verisidir.</p>
+<p>Bu nedenle bulgular, gercek bir fiziksel sistemin kesin performans kaniti olarak degil, R ile is analitigi yontemlerinin yeniden uretilebilir bir uygulamasi olarak yorumlanmalidir.</p>
+<p>Veri kaynaginin sentetik olarak secilmesinin temel nedeni, gercek bir prototip veya saha testinden olcum alinmamis olmasidir. Bu durum, calismanin sinirliligi olmakla birlikte ayni zamanda ders kapsaminda ogrenilen R tabanli veri analitigi surecini kontrollu bir veri seti uzerinde uygulama olanagi saglamaktadir. Bu nedenle veri seti, gercek sistem davranisini birebir temsil eden bir olcum kaydi olarak degil, karar analitigi yaklasimini gostermek icin olusturulmus bir calisma verisi olarak ele alinmistir.</p>
+</section>
+<section id="veri-hakkinda-genel-bilgiler" class="level2">
+<h2 class="anchored" data-anchor-id="veri-hakkinda-genel-bilgiler">Veri Hakkinda Genel Bilgiler</h2>
+<p>Veri seti dort faktor ve dort yanit degiskeninden olusmaktadir. Dort faktorun her biri iki seviyede ele alinmis, her kombinasyon iki tekrar ile gozlemlenmis ve toplam 32 gozlem elde edilmistir.</p>
+<p>Faktorler, sistem uzerinde degistirilebilir ayarlari temsil etmektedir:</p>
+<ul>
+<li><code>A - Aktuator surus seviyesi</code>: Aktuatorun geri tepme etkisini olusturmak icin ne kadar guclu calistirildigini ifade eder. Dusuk surus seviyesi daha yumusak bir tepki uretirken, yuksek surus seviyesi daha belirgin bir geri tepme hissi olusturabilir.</li>
+<li><code>B - Darbe suresi</code>: Geri tepme etkisinin ne kadar sureyle uygulandigini gosterir. Kisa darbe suresi daha ani ve kontrollu bir etkiyi, uzun darbe suresi ise daha yayilmis ve toparlanmasi daha zor olabilecek bir etkiyi temsil eder.</li>
+<li><code>C - Hareketli kutle seviyesi</code>: Simulator icinde geri tepme hissini olusturan hareketli parcanin kutle duzeyini temsil eder. Daha yuksek kutle, geri tepme hissini guclendirebilir; ancak sistemin toparlanma davranisini da etkileyebilir.</li>
+<li><code>D - Sonumleme seviyesi</code>: Geri tepme sonrasi hareketin ne kadar hizli bastirildigini veya dengelendigini ifade eder. Yuksek sonumleme, sistemin daha kontrollu bicimde toparlanmasina yardimci olabilir.</li>
+</ul>
+<p>Yanit degiskenleri ise her deney kosulunda sistemin nasil davrandigini olcmek icin kullanilan performans gostergeleridir:</p>
+<ul>
+<li><code>Sapma</code>: Geri tepme sonrasinda nisan hattinda veya simulator ekseninde olusan sapma duzeyini temsil eder. Cok dusuk sapma gercekcilik hissini azaltabilir; cok yuksek sapma ise kontrolu zorlastirabilir.</li>
+<li><code>Toparlanma</code>: Geri tepme etkisinden sonra sistemin yeniden kararli hale gelmesi icin gereken sureyi temsil eder. Daha dusuk toparlanma suresi, kullanicinin bir sonraki harekete daha hizli hazirlanabilmesi acisindan avantajlidir.</li>
+<li><code>Skor</code>: Geri tepme davranisinin kullanici tarafindan ne kadar gercekci algilanabilecegini temsil eden sentetik bir degerlendirme skorudur. Bu degiskende yuksek deger daha olumlu kabul edilmistir.</li>
+<li><code>Enerji</code>: Geri tepme etkisini olusturmak icin gereken enerji yukunu temsil eder. Enerji degerinin cok yukselmesi, gercek bir sistemde batarya tuketimi, isinma veya mekanik zorlanma gibi konular acisindan risk olusturabilir.</li>
+</ul>
+<p>Bu yapi, her faktor kombinasyonunun sistem davranisi uzerindeki etkisini karsilastirmaya imkan verir. Ornegin yuksek surus seviyesi geri tepme hissini artirabilir; ancak ayni zamanda enerji yukunu veya toparlanma suresini de artirabilir. Benzer sekilde yuksek sonumleme, sistemin daha kontrollu toparlanmasina yardimci olabilir fakat gercekcilik algisi uzerindeki etkisi diger faktorlerle birlikte degerlendirilmelidir. Bu nedenle veri seti, tek degiskenli bir siralama yapmak yerine cok kriterli bir karar problemi olarak yorumlanmistir.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-sm caption-top small">
+<caption>Veri setinden ilk sekiz gozlem</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">Deney sirasi</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Standart sira</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Tekrar</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">A - Aktuator surusu</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">B - Darbe suresi</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">C - Hareketli kutle</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">D - Sonumleme</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Sapma</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Toparlanma</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Gercekcilik skoru</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Enerji yuku</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Kisa</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">1.46</td>
+<td style="text-align: right;">114</td>
+<td style="text-align: right;">7.20</td>
+<td style="text-align: right;">5.72</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Kisa</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">1.55</td>
+<td style="text-align: right;">112</td>
+<td style="text-align: right;">7.17</td>
+<td style="text-align: right;">5.70</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Kisa</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">3.26</td>
+<td style="text-align: right;">137</td>
+<td style="text-align: right;">8.59</td>
+<td style="text-align: right;">9.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Kisa</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">3.32</td>
+<td style="text-align: right;">135</td>
+<td style="text-align: right;">8.72</td>
+<td style="text-align: right;">8.68</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Uzun</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">2.20</td>
+<td style="text-align: right;">163</td>
+<td style="text-align: right;">6.80</td>
+<td style="text-align: right;">8.11</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Uzun</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">2.03</td>
+<td style="text-align: right;">148</td>
+<td style="text-align: right;">6.84</td>
+<td style="text-align: right;">7.89</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Uzun</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">4.16</td>
+<td style="text-align: right;">201</td>
+<td style="text-align: right;">7.87</td>
+<td style="text-align: right;">11.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Uzun</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">4.11</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: right;">8.11</td>
+<td style="text-align: right;">11.01</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="veri-okuma-ve-on-isleme" class="level2">
+<h2 class="anchored" data-anchor-id="veri-okuma-ve-on-isleme">Veri Okuma ve On Isleme</h2>
+<p>Veriler CSV formatinda R ortamina aktarilmistir. Ders notlarinda yer alan <code>readr</code>, <code>dplyr</code>, <code>tidyr</code> ve <code>stringr</code> paketleri kullanilarak veri okunmus, faktor degiskenleri duzenlenmis, kombinasyon etiketi olusturulmus ve grafikler icin uzun formata cevrilmistir.</p>
+<p>On isleme asamasinda oncelikle veri setinde eksik deger olup olmadigi kontrol edilmistir. Daha sonra <code>A</code>, <code>B</code>, <code>C</code> ve <code>D</code> degiskenleri karakter veri tipinden faktor yapisina donusturulmustur. Bu donusum onemlidir; cunku bu degiskenler sayisal buyukluk degil, kategorik deney seviyelerini temsil etmektedir. Ayrica grafiklerde ve ozet tablolarda daha okunabilir bir yapi elde etmek icin her satirda faktor kombinasyonunu gosteren ek bir etiket olusturulmustur.</p>
+<p>Grafik ve ozet analizlerde daha esnek calisabilmek icin veri seti uzun formata da cevrilmistir. Boylece <code>Sapma</code>, <code>Toparlanma</code>, <code>Skor</code> ve <code>Enerji</code> degiskenleri ayni yapi icinde karsilastirilabilir hale getirilmistir. Bu adim, ders notlarinda anlatilan tidy data yaklasimina uygun bir duzenleme adimidir.</p>
+<p>Asagidaki tablo, analizde kullanilan 32 gozlemli ham sentetik veri setinin tamamini gostermektedir. Tabloda her satir bir deney kosulunu; faktor sutunlari ilgili ayari; son dort sutun ise bu ayar altinda elde edilen sentetik yanit degerlerini gostermektedir.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-sm caption-top small">
+<caption>Analizde kullanilan ham sentetik veri seti</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">Deney sirasi</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Standart sira</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Tekrar</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">A - Aktuator surusu</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">B - Darbe suresi</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">C - Hareketli kutle</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">D - Sonumleme</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Sapma</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Toparlanma</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Gercekcilik skoru</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Enerji yuku</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Kisa</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">1.46</td>
+<td style="text-align: right;">114</td>
+<td style="text-align: right;">7.20</td>
+<td style="text-align: right;">5.72</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Kisa</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">1.55</td>
+<td style="text-align: right;">112</td>
+<td style="text-align: right;">7.17</td>
+<td style="text-align: right;">5.70</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Kisa</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">3.26</td>
+<td style="text-align: right;">137</td>
+<td style="text-align: right;">8.59</td>
+<td style="text-align: right;">9.01</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Kisa</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">3.32</td>
+<td style="text-align: right;">135</td>
+<td style="text-align: right;">8.72</td>
+<td style="text-align: right;">8.68</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Uzun</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">2.20</td>
+<td style="text-align: right;">163</td>
+<td style="text-align: right;">6.80</td>
+<td style="text-align: right;">8.11</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Uzun</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">2.03</td>
+<td style="text-align: right;">148</td>
+<td style="text-align: right;">6.84</td>
+<td style="text-align: right;">7.89</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Uzun</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">4.16</td>
+<td style="text-align: right;">201</td>
+<td style="text-align: right;">7.87</td>
+<td style="text-align: right;">11.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Uzun</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">4.11</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: right;">8.11</td>
+<td style="text-align: right;">11.01</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Kisa</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">1.94</td>
+<td style="text-align: right;">151</td>
+<td style="text-align: right;">7.81</td>
+<td style="text-align: right;">7.86</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Kisa</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">2.02</td>
+<td style="text-align: right;">152</td>
+<td style="text-align: right;">7.76</td>
+<td style="text-align: right;">7.66</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Kisa</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">4.06</td>
+<td style="text-align: right;">185</td>
+<td style="text-align: right;">9.11</td>
+<td style="text-align: right;">11.38</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Kisa</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">4.27</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">9.13</td>
+<td style="text-align: right;">11.32</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Uzun</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">2.58</td>
+<td style="text-align: right;">210</td>
+<td style="text-align: right;">6.80</td>
+<td style="text-align: right;">9.92</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Uzun</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">2.56</td>
+<td style="text-align: right;">217</td>
+<td style="text-align: right;">6.81</td>
+<td style="text-align: right;">9.95</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Uzun</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">4.94</td>
+<td style="text-align: right;">260</td>
+<td style="text-align: right;">7.78</td>
+<td style="text-align: right;">13.74</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Uzun</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">4.94</td>
+<td style="text-align: right;">257</td>
+<td style="text-align: right;">7.57</td>
+<td style="text-align: right;">13.66</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Kisa</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: right;">1.15</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">7.59</td>
+<td style="text-align: right;">6.44</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Kisa</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: right;">1.21</td>
+<td style="text-align: right;">92</td>
+<td style="text-align: right;">7.67</td>
+<td style="text-align: right;">6.46</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Kisa</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: right;">3.04</td>
+<td style="text-align: right;">112</td>
+<td style="text-align: right;">8.92</td>
+<td style="text-align: right;">9.47</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Kisa</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: right;">2.96</td>
+<td style="text-align: right;">106</td>
+<td style="text-align: right;">9.05</td>
+<td style="text-align: right;">9.75</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Uzun</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: right;">1.76</td>
+<td style="text-align: right;">122</td>
+<td style="text-align: right;">7.28</td>
+<td style="text-align: right;">8.91</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Uzun</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: right;">1.68</td>
+<td style="text-align: right;">136</td>
+<td style="text-align: right;">7.05</td>
+<td style="text-align: right;">8.90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Uzun</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: right;">3.68</td>
+<td style="text-align: right;">162</td>
+<td style="text-align: right;">8.34</td>
+<td style="text-align: right;">12.04</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Uzun</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: right;">3.63</td>
+<td style="text-align: right;">163</td>
+<td style="text-align: right;">8.17</td>
+<td style="text-align: right;">11.98</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Kisa</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: right;">1.45</td>
+<td style="text-align: right;">123</td>
+<td style="text-align: right;">8.14</td>
+<td style="text-align: right;">8.65</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Kisa</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: right;">1.49</td>
+<td style="text-align: right;">119</td>
+<td style="text-align: right;">8.14</td>
+<td style="text-align: right;">8.44</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Kisa</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: right;">3.58</td>
+<td style="text-align: right;">149</td>
+<td style="text-align: right;">9.31</td>
+<td style="text-align: right;">12.16</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Kisa</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: right;">3.61</td>
+<td style="text-align: right;">146</td>
+<td style="text-align: right;">9.50</td>
+<td style="text-align: right;">12.33</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Uzun</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: right;">1.93</td>
+<td style="text-align: right;">188</td>
+<td style="text-align: right;">7.21</td>
+<td style="text-align: right;">10.75</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: left;">Uzun</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: right;">2.08</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: right;">7.18</td>
+<td style="text-align: right;">10.85</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Uzun</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: right;">4.34</td>
+<td style="text-align: right;">227</td>
+<td style="text-align: right;">8.08</td>
+<td style="text-align: right;">14.31</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Uzun</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: right;">4.26</td>
+<td style="text-align: right;">228</td>
+<td style="text-align: right;">8.06</td>
+<td style="text-align: right;">14.41</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>veri_ornek <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">proje_yolu</span>(<span class="st">"data/03_m4_temiz_veri.csv"</span>), <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>veri_ornek <span class="ot">&lt;-</span> veri_ornek <span class="sc">|&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">A =</span> <span class="fu">factor</span>(A, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Dusuk"</span>, <span class="st">"Yuksek"</span>)),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">B =</span> <span class="fu">factor</span>(B, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Kisa"</span>, <span class="st">"Uzun"</span>)),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">C =</span> <span class="fu">factor</span>(C, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Dusuk"</span>, <span class="st">"Yuksek"</span>)),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">D =</span> <span class="fu">factor</span>(D, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Dusuk"</span>, <span class="st">"Yuksek"</span>)),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">kombinasyon =</span> <span class="fu">str_c</span>(<span class="st">"A="</span>, A, <span class="st">" | B="</span>, B, <span class="st">" | C="</span>, C, <span class="st">" | D="</span>, D)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>eksik_deger_tablo <span class="sc">|&gt;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tablo_html</span>(<span class="st">"On isleme sonrasi eksik deger kontrolu"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-sm caption-top small">
+<caption>On isleme sonrasi eksik deger kontrolu</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Degisken</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Eksik deger sayisi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Run</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Std</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Rep</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">D</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sapma</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Toparlanma</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Skor</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Enerji</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">kombinasyon</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="kesifsel-veri-analizi" class="level1">
+<h1>Kesifsel Veri Analizi</h1>
+<p>Ilk adimda veri setinin genel yapisi ve sayisal degiskenlerin temel ozetleri incelenmistir. Bu adim, hangi degiskenlerin karar acisindan daha belirleyici olabilecegini anlamak icin kullanilmistir.</p>
+<p>Kesifsel veri analizi, bu projede yalnizca tablo uretmek icin degil, sonraki grafik ve karar adimlarini yonlendirmek icin kullanilmistir. Ortalama, minimum ve maksimum degerler incelenerek degiskenlerin hangi aralikta degistigi gorulmustur. Boylece ornegin gercekcilik skoru yuksek olan ayarlarin enerji yuku bakimindan da kabul edilebilir olup olmadigi tartisilabilir hale gelmistir.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-sm caption-top small">
+<caption>Sayisal degiskenlerin genel ozeti</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">Gozlem sayisi</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Sapma ort.</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Sapma min.</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Sapma maks.</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Toparlanma ort.</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Toparlanma min.</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Toparlanma maks.</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Skor ort.</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Skor min.</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Skor maks.</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Enerji ort.</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Enerji min.</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Enerji maks.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">2.85</td>
+<td style="text-align: right;">1.15</td>
+<td style="text-align: right;">4.94</td>
+<td style="text-align: right;">161.62</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">260</td>
+<td style="text-align: right;">7.93</td>
+<td style="text-align: right;">6.8</td>
+<td style="text-align: right;">9.5</td>
+<td style="text-align: right;">9.95</td>
+<td style="text-align: right;">5.7</td>
+<td style="text-align: right;">14.41</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Faktor seviyelerine gore ortalamalar incelendiginde, ozellikle surus seviyesi ve darbe suresinin sapma, toparlanma ve gercekcilik skoru uzerinde belirgin farklar olusturdugu gorulmektedir.</p>
+<p>Bu tablo, her faktorun tek basina ortalama etkisini gormeye yardimci olur. Ancak faktorlerin birlikte calistigi unutulmamalidir. Bir ayarin iyi veya kotu olarak siniflandirilmasi yalnizca surus seviyesi ya da darbe suresine bagli degildir; kutle ve sonumleme seviyesi de sonuclari degistirebilir. Bu nedenle grafiklerle analiz bolumunde degiskenler birlikte yorumlanmistir.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-sm caption-top small">
+<caption>Faktor seviyelerine gore ortalama yanitlar</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Faktor</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Seviye</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Ortalama sapma</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Ortalama toparlanma</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Ortalama skor</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Ortalama enerji</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Aktuator surusu</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">1.82</td>
+<td style="text-align: right;">145.38</td>
+<td style="text-align: right;">7.34</td>
+<td style="text-align: right;">8.26</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Aktuator surusu</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: right;">3.88</td>
+<td style="text-align: right;">177.88</td>
+<td style="text-align: right;">8.52</td>
+<td style="text-align: right;">11.64</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Darbe suresi</td>
+<td style="text-align: left;">Kisa</td>
+<td style="text-align: right;">2.52</td>
+<td style="text-align: right;">131.31</td>
+<td style="text-align: right;">8.36</td>
+<td style="text-align: right;">8.81</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Darbe suresi</td>
+<td style="text-align: left;">Uzun</td>
+<td style="text-align: right;">3.18</td>
+<td style="text-align: right;">191.94</td>
+<td style="text-align: right;">7.50</td>
+<td style="text-align: right;">11.09</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hareketli kutle</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">2.58</td>
+<td style="text-align: right;">136.81</td>
+<td style="text-align: right;">7.84</td>
+<td style="text-align: right;">8.82</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hareketli kutle</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: right;">3.13</td>
+<td style="text-align: right;">186.44</td>
+<td style="text-align: right;">8.02</td>
+<td style="text-align: right;">11.09</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sonumleme</td>
+<td style="text-align: left;">Dusuk</td>
+<td style="text-align: right;">3.09</td>
+<td style="text-align: right;">176.25</td>
+<td style="text-align: right;">7.75</td>
+<td style="text-align: right;">9.54</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sonumleme</td>
+<td style="text-align: left;">Yuksek</td>
+<td style="text-align: right;">2.62</td>
+<td style="text-align: right;">147.00</td>
+<td style="text-align: right;">8.11</td>
+<td style="text-align: right;">10.37</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Bu bolumdeki tablolar, Grafik 1’in temelini olusturmaktadir. Once her faktor seviyesi ve her kombinasyon icin sapma, toparlanma, gercekcilik skoru ve enerji degerleri ozetlenmistir. Daha sonra ozellikle <code>Skor</code> degiskeni kullanilarak her faktor kombinasyonunun ortalama gercekcilik skoru hesaplanmistir. Grafik 1, bu hesaplanan ortalama gercekcilik skorlarini gorsellestirerek hangi ayar kombinasyonlarinin kullanici algisi acisindan daha guclu gorundugunu karsilastirmali bicimde gostermektedir.</p>
+</section>
+<section id="grafiklerle-analiz" class="level1">
+<h1>Grafiklerle Analiz</h1>
+<p>Bu bolumde grafiklerde ve tablolarda ortak bir yesil/teal renk standardi kullanilmistir. Koyu yesil ana vurgu ve baslik rengini, canli yesil guclu sonuclari, mint tonu orta seviyedeki durumlari, notr yesil-gri ton ise daha dusuk performans gosteren adaylari temsil etmektedir. Boylece farkli grafiklerde kullanilan renklerin ayni gorsel dil icinde okunmasi amaclanmistir.</p>
+<section id="grafik-1-faktor-kombinasyonlarina-gore-gercekcilik-skoru" class="level2">
+<h2 class="anchored" data-anchor-id="grafik-1-faktor-kombinasyonlarina-gore-gercekcilik-skoru">Grafik 1: Faktor Kombinasyonlarina Gore Gercekcilik Skoru</h2>
+<p>Grafiklerde kullanilan kisaltmalar veri setindeki faktorleri temsil etmektedir: <code>A</code> aktuator surus seviyesini, <code>B</code> darbe suresini, <code>C</code> hareketli kutle seviyesini ve <code>D</code> sonumleme seviyesini ifade etmektedir. Ornegin <code>A:Yuksek | B:Kisa | C:Yuksek | D:Yuksek</code> ifadesi; aktuator surusunun yuksek, darbe suresinin kisa, hareketli kutlenin yuksek ve sonumlemenin yuksek oldugu ayar kombinasyonunu gostermektedir.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="outputs/figures/grafik_01_gercekcilik_skoru.png" class="img-fluid figure-img"></p>
+<figcaption>Faktor kombinasyonlarina gore ortalama gercekcilik skoru</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Bu grafik, gercekcilik skorunun faktor kombinasyonlarina gore degistigini gostermektedir. En yuksek skorlar genellikle surus seviyesinin yuksek ve darbe suresinin kisa oldugu kombinasyonlarda ortaya cikmaktadir. Bu durum, sentetik senaryoda geri tepme hissinin guclu fakat kontrol edilebilir oldugu ayarlarin daha olumlu degerlendirildigini gostermektedir.</p>
+<p>Grafik ayni zamanda tum kombinasyonlarin birbirine yakin performans gostermedigini de ortaya koymaktadir. Bazi ayarlar yuksek gercekcilik saglarken bazilari belirgin bicimde geride kalmaktadir. Bu fark, karar vericinin yalnizca faktor seviyelerini tek tek degil, kombinasyon mantigiyla degerlendirmesi gerektigini gostermektedir.</p>
+<p>Grafik 1’de ust siralarda yer alan kombinasyonlar incelendiginde, yuksek aktuator surus seviyesinin gercekcilik algisini artiran onemli bir unsur oldugu gorulmektedir. Ancak yalnizca surus seviyesinin yuksek olmasi yeterli degildir; darbe suresinin kisa olmasi da ayarin daha dengeli algilanmasina katki saglamaktadir. Uzun darbe suresi kullanilan bazi kombinasyonlarda gercekcilik skoru dusmektedir. Bu durum, geri tepme etkisinin guclu olmasinin yaninda suresinin de kontrol edilebilir olmasi gerektigini gostermektedir.</p>
+<p>Kutle ve sonumleme seviyeleri ise ust siralardaki kombinasyonlarin kendi icindeki siralamasini degistirmektedir. Ozellikle yuksek sonumleme, geri tepme sonrasi sistemin daha kontrollu davranmasina katki sundugu icin gercekcilik algisini dolayli olarak destekleyebilir. Bu nedenle Grafik 1, tek bir faktorun etkisinden cok faktorlerin birlikte olusturdugu ayar profilinin onemli oldugunu gostermektedir.</p>
+</section>
+<section id="grafik-2-sapma-ve-toparlanma-suresi-iliskisi" class="level2">
+<h2 class="anchored" data-anchor-id="grafik-2-sapma-ve-toparlanma-suresi-iliskisi">Grafik 2: Sapma ve Toparlanma Suresi Iliskisi</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="outputs/figures/grafik_02_sapma_toparlanma.png" class="img-fluid figure-img"></p>
+<figcaption>Sapma ve toparlanma suresi iliskisi</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Sapma ile toparlanma suresi birlikte incelendiginde, daha yuksek sapma ureten ayarlarin her zaman daha iyi olmadigi gorulmektedir. Cunku yuksek sapma, toparlanma suresini uzatarak kullanici kontrolunu zorlastirabilir. Bu nedenle karar yalnizca tek bir degiskene gore verilmemelidir.</p>
+<p>Bu grafik is analitigi acisindan onemli bir denge problemini gostermektedir. Egitim simulatorunde sapmanin cok dusuk olmasi gercekcilik hissini zayiflatabilir; ancak sapmanin cok yuksek olmasi da kullanicinin hedefe geri donmesini zorlastirabilir. Bu nedenle ideal ayar, yuksek sapma ureten degil, yeterli sapma ile makul toparlanma suresini birlikte saglayan ayardir.</p>
+<p>Grafik 2’de noktalarin konumu, her deney kosulunda sapma ve toparlanma suresinin birlikte nasil degistigini gostermektedir. Renk tonlari gercekcilik skorunu temsil ettigi icin yalnizca eksenlere degil, noktanin rengine de bakmak gerekir. Daha koyu renkli noktalar daha yuksek gercekcilik skoruna karsilik gelmektedir. Bu sayede, yuksek gercekcilik skoru saglayan ayarlarin ayni zamanda kabul edilebilir toparlanma suresine sahip olup olmadigi gorsel olarak degerlendirilebilir.</p>
+<p>Grafikte gorulen temel cikarim, kararin tek boyutlu olmadigidir. Sag tarafa dogru gidildikce sapma artmakta, yukari dogru gidildikce toparlanma suresi uzamaktadir. Ideal bolge, cok dusuk sapmanin olmadigi fakat toparlanma suresinin de asiri yukselmedigi orta-ust denge alanidir. Bu nedenle Grafik 2, sonraki coklu yanit kalite indeksinin neden gerekli oldugunu desteklemektedir: cunku gercekcilik, sapma ve toparlanma ayni anda degerlendirilmeden guvenilir bir karar onerisi uretmek zordur.</p>
+</section>
+<section id="grafik-3-sonumleme-seviyesine-gore-toparlanma-suresi" class="level2">
+<h2 class="anchored" data-anchor-id="grafik-3-sonumleme-seviyesine-gore-toparlanma-suresi">Grafik 3: Sonumleme Seviyesine Gore Toparlanma Suresi</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="outputs/figures/grafik_03_toparlanma_boxplot.png" class="img-fluid figure-img"></p>
+<figcaption>Sonumleme seviyesine gore toparlanma suresi</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Boxplot grafigi, sonumleme seviyesinin toparlanma suresi uzerindeki etkisini gorsel olarak karsilastirmaktadir. Yuksek sonumleme seviyesi, geri tepme sonrasi sistemin daha kontrollu davranmasina yardimci olan bir faktor olarak yorumlanabilir.</p>
+<p>Kutu grafigi dagilimi gostermesi acisindan ozellikle yararlidir. Sadece ortalamaya bakmak yerine, toparlanma suresinin hangi aralikta degistigi ve degerlerin ne kadar yayildigi gorulebilir. Bu da karar surecinde kararlilik ve tutarlilik acisindan ek bilgi saglar.</p>
+</section>
+<section id="grafik-4-enerji-yuku-ve-gercekcilik-skoru-iliskisi" class="level2">
+<h2 class="anchored" data-anchor-id="grafik-4-enerji-yuku-ve-gercekcilik-skoru-iliskisi">Grafik 4: Enerji Yuku ve Gercekcilik Skoru Iliskisi</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="outputs/figures/grafik_04_enerji_skor.png" class="img-fluid figure-img"></p>
+<figcaption>Enerji yuku ve gercekcilik skoru iliskisi</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Enerji yuku ile gercekcilik skoru arasinda dogrudan ve tek yonlu bir karar vermek uygun degildir. Bazi ayarlar daha yuksek gercekcilik skoru uretse de enerji yuku de artabilmektedir. Bu nedenle proje kapsaminda enerji yuku, karar skorunda dengeleyici bir kriter olarak ele alinmistir.</p>
+<p>Bu bolumde amac, “en gercekci his” ile “uygulanabilir enerji yuku” arasindaki iliskiyi tartismaktir. Gercek bir sistemde enerji yukunun artmasi batarya kullanimi, aktuator isinmasi veya uzun donem guvenilirlik gibi konularda risk olusturabilir. Bu nedenle gercekcilik skoru yuksek olan bir ayar, enerji yuku cok yuksekse dogrudan en iyi secenek olarak kabul edilmemelidir.</p>
+</section>
+<section id="grafik-5-faktor-seviyelerine-gore-ortalama-skor" class="level2">
+<h2 class="anchored" data-anchor-id="grafik-5-faktor-seviyelerine-gore-ortalama-skor">Grafik 5: Faktor Seviyelerine Gore Ortalama Skor</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="outputs/figures/grafik_05_faktor_skor.png" class="img-fluid figure-img"></p>
+<figcaption>Faktor seviyelerine gore ortalama gercekcilik skoru</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Bu grafik, her faktorun seviyelerine gore ortalama gercekcilik skorunu gostermektedir. Ders notlarinda vurgulanan gorsellestirme prensiplerine uygun olarak, kategorik seviyeler grafik uzerinden karsilastirilmis ve karar acisindan anlamli farklar aranmistir.</p>
+<p>Grafik, faktor seviyelerinin etkisini sade bir bicimde okumaya yardimci olur. Bu tur bir gorsellestirme, karar vericiye hangi faktorlerin daha dikkatle izlenmesi gerektigini gosterir. Ozellikle gercekcilik skoru acisindan guclu gorunen seviyeler, sonraki coklu yanit degerlendirmesinde diger kriterlerle birlikte yeniden ele alinmistir.</p>
+</section>
+</section>
+<section id="coklu-yanit-degerlendirmesi" class="level1">
+<h1>Coklu Yanit Degerlendirmesi</h1>
+<p>Tek bir performans gostergesine bakmak yerine sapma, toparlanma suresi, gercekcilik skoru ve enerji yuku birlikte degerlendirilmistir. Bu amacla her aday kombinasyon icin 0-100 araliginda bir kalite indeksi hesaplanmistir.</p>
+<p>Kalite indeksinde amac, farkli yonlerde yorumlanan degiskenleri ortak bir karar olcusune donusturmektir. Gercekcilik skorunun yuksek olmasi olumlu kabul edilirken, toparlanma suresi ve enerji yukunun daha dusuk olmasi tercih edilmistir. Sapma icin ise hedefe yakinlik mantigi kullanilmistir; cunku sapmanin ne cok dusuk ne de asiri yuksek olmasi istenmektedir.</p>
+<div class="cell" data-tbl-cap="Kalite indeksine gore en iyi aday kombinasyonlar">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>karar_tablosu <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(kombinasyon_kisa, sapma_ort, toparlanma_ort, skor_ort, enerji_ort, kalite_indeksi, karar_sinifi) <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">8</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Faktor kombinasyonu</span><span class="st">`</span> <span class="ot">=</span> kombinasyon_kisa,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Ortalama sapma</span><span class="st">`</span> <span class="ot">=</span> sapma_ort,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Ortalama toparlanma</span><span class="st">`</span> <span class="ot">=</span> toparlanma_ort,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Ortalama skor</span><span class="st">`</span> <span class="ot">=</span> skor_ort,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Ortalama enerji</span><span class="st">`</span> <span class="ot">=</span> enerji_ort,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Kalite indeksi</span><span class="st">`</span> <span class="ot">=</span> kalite_indeksi,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Karar sinifi</span><span class="st">`</span> <span class="ot">=</span> karar_sinifi</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tablo_html</span>(<span class="st">"Kalite indeksine gore en iyi aday kombinasyonlar"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-sm caption-top small">
+<caption>Kalite indeksine gore en iyi aday kombinasyonlar</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Faktor kombinasyonu</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Ortalama sapma</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Ortalama toparlanma</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Ortalama skor</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Ortalama enerji</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Kalite indeksi</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Karar sinifi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">A:Yüksek | B:Kısa | C:Yüksek | D:Yüksek</td>
+<td style="text-align: right;">3.60</td>
+<td style="text-align: right;">147.5</td>
+<td style="text-align: right;">9.40</td>
+<td style="text-align: right;">12.24</td>
+<td style="text-align: right;">80.07</td>
+<td style="text-align: left;">Güçlü aday</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A:Yüksek | B:Kısa | C:Düşük | D:Yüksek</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">109.0</td>
+<td style="text-align: right;">8.98</td>
+<td style="text-align: right;">9.61</td>
+<td style="text-align: right;">78.13</td>
+<td style="text-align: left;">Güçlü aday</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A:Yüksek | B:Kısa | C:Düşük | D:Düşük</td>
+<td style="text-align: right;">3.29</td>
+<td style="text-align: right;">136.0</td>
+<td style="text-align: right;">8.66</td>
+<td style="text-align: right;">8.84</td>
+<td style="text-align: right;">75.24</td>
+<td style="text-align: left;">Güçlü aday</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A:Yüksek | B:Kısa | C:Yüksek | D:Düşük</td>
+<td style="text-align: right;">4.16</td>
+<td style="text-align: right;">182.5</td>
+<td style="text-align: right;">9.12</td>
+<td style="text-align: right;">11.35</td>
+<td style="text-align: right;">66.20</td>
+<td style="text-align: left;">İzlenebilir aday</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A:Yüksek | B:Uzun | C:Düşük | D:Yüksek</td>
+<td style="text-align: right;">3.65</td>
+<td style="text-align: right;">162.5</td>
+<td style="text-align: right;">8.25</td>
+<td style="text-align: right;">12.01</td>
+<td style="text-align: right;">64.37</td>
+<td style="text-align: left;">İzlenebilir aday</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A:Yüksek | B:Uzun | C:Düşük | D:Düşük</td>
+<td style="text-align: right;">4.14</td>
+<td style="text-align: right;">199.5</td>
+<td style="text-align: right;">7.99</td>
+<td style="text-align: right;">11.03</td>
+<td style="text-align: right;">51.57</td>
+<td style="text-align: left;">Zayıf aday</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A:Düşük | B:Kısa | C:Yüksek | D:Yüksek</td>
+<td style="text-align: right;">1.47</td>
+<td style="text-align: right;">121.0</td>
+<td style="text-align: right;">8.14</td>
+<td style="text-align: right;">8.54</td>
+<td style="text-align: right;">49.48</td>
+<td style="text-align: left;">Zayıf aday</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A:Düşük | B:Kısa | C:Yüksek | D:Düşük</td>
+<td style="text-align: right;">1.98</td>
+<td style="text-align: right;">151.5</td>
+<td style="text-align: right;">7.78</td>
+<td style="text-align: right;">7.76</td>
+<td style="text-align: right;">48.55</td>
+<td style="text-align: left;">Zayıf aday</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="outputs/figures/grafik_06_coklu_yanit_skoru.png" class="img-fluid figure-img"></p>
+<figcaption>Coklu yanit kalite indeksine gore aday kombinasyonlar</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Coklu yanit kalite indeksine gore en guclu aday kombinasyon <code>A=Yuksek</code>, <code>B=Kisa</code>, <code>C=Yuksek</code>, <code>D=Yuksek</code> olarak belirlenmistir. Bu ayar, sentetik senaryo icinde yuksek gercekcilik skoru saglarken sapma, toparlanma ve enerji yuku arasinda daha dengeli bir sonuc vermektedir.</p>
+<p>Ilk uc adayin tamaminda surus seviyesinin yuksek ve darbe suresinin kisa olmasi dikkat cekicidir. Bu sonuc, sentetik senaryoda guclu fakat kisa sureli bir etkinin daha avantajli oldugunu dusundurmektedir. Bununla birlikte kutle ve sonumleme seviyeleri adaylarin siralamasini degistirmektedir. Bu nedenle karar onerisi tek bir faktore indirgenmemis, tum yanitlarin birlikte degerlendirildigi kalite indeksi uzerinden yapilmistir.</p>
+</section>
+<section id="sonuclar-ve-ana-cikarimlar" class="level1">
+<h1>Sonuclar ve Ana Cikarimlar</h1>
+<p>Bu calismada M4 elektronik egitim simulatoru icin sentetik deney verisi uzerinden R tabanli bir is analitigi akisi kurulmustur. Veri okuma, duzenleme, ozetleme, gorsellestirme ve coklu kriterli karar skoru adimlari birlikte kullanilmistir.</p>
+<p>Ana cikarimlar:</p>
+<ul>
+<li>En yuksek geri tepme hissi her zaman en iyi ayar anlamina gelmemektedir.</li>
+<li>Toparlanma suresi ve enerji yuku karar surecinde mutlaka dikkate alinmalidir.</li>
+<li>Sentetik senaryo icinde en dengeli aday <code>A=Yuksek</code>, <code>B=Kisa</code>, <code>C=Yuksek</code>, <code>D=Yuksek</code> kombinasyonudur.</li>
+<li>R ile hazirlanan bu analiz akisi, gercek test verisi elde edildiginde ayni sekilde tekrar calistirilabilir.</li>
+</ul>
+<p>Genel olarak bu calisma, is analitigi yaklasiminin yalnizca gecmis verileri ozetlemekten ibaret olmadigini gostermektedir. Veri duzenleme, gorsellestirme ve karar skoru adimlari birlikte kullanildiginda, karmasik gorunen teknik bir problem daha anlasilir bir karar problemine donusturulebilmektedir. Bu yonuyle proje, MUY665 dersinde ele alinan tanimlayici analitik ve karar destegi yaklasimini uygulamali bir ornek uzerinden gostermektedir.</p>
+</section>
+<section id="kisitlar-ve-etik-not" class="level1">
+<h1>Kisitlar ve Etik Not</h1>
+<p>Bu calisma gercek saha veya laboratuvar test verisi icermemektedir. Veri seti sentetik/senaryo tabanli oldugu icin bulgular gercek bir fiziksel sistemin kesin performans kaniti olarak yorumlanmamalidir. Gercek uygulama icin pilot test, olcum sistemi analizi ve fiziksel dogrulama gereklidir.</p>
+<p>Bu proje kapsaminda yapay zeka destegi; proje planinin duzenlenmesi, R kod akisinin yapilandirilmasi, Quarto rapor taslaginin hazirlanmasi ve yazili anlatimin iyilestirilmesi amaciyla kullanilmistir.</p>
+</section>
+<section id="kaynaklar" class="level1">
+<h1>Kaynaklar</h1>
+<ul>
+<li>MUY665 Is Analitigi ders notlari, 2025-2026 Bahar Donemi.</li>
+<li>MUY665 2023-2024 Bahar donemi ornek proje sayfalari.</li>
+<li>Quarto dokumantasyonu: <a href="https://quarto.org/" class="uri">https://quarto.org/</a></li>
+<li>R paketleri: <code>readr</code>, <code>dplyr</code>, <code>tidyr</code>, <code>stringr</code>, <code>ggplot2</code>.</li>
+</ul>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Hacettepe IE - MUY665 - Bahar 2026</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
